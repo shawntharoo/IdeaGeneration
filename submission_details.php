@@ -7,14 +7,16 @@
 	$sqlViews = "SELECT views FROM post WHERE postId = '$ideaId' ";
 	$sqlComments = "SELECT COUNT(*) FROM comment WHERE  submissionId = '$ideaId' AND commentType='Comment' ";
 	$sqlImprovements = "SELECT COUNT(*) FROM comment WHERE  submissionId = '$ideaId' AND commentType='Improvement' ";
-	$sqlUpvotes = "SELECT COUNT(*) FROM votes WHERE  submissionId = '$ideaId' AND voteType='Upvote' ";
-	$sqlDownvotes = "SELECT COUNT(*) FROM votes WHERE  submissionId = '$ideaId' AND voteType='Downvote' ";
+	$sqlAccvotes = "SELECT SUM(weight), COUNT(*) FROM votes WHERE  submissionId = '$ideaId' AND voteCategory='Accuracy' ";
+	$sqlFvotes = "SELECT SUM(weight), COUNT(*) FROM votes WHERE  submissionId = '$ideaId' AND voteCategory='Feasibility' ";
+	$sqlTvotes = "SELECT SUM(weight), COUNT(*) FROM votes WHERE  submissionId = '$ideaId' AND voteCategory='Timeliness' ";
 
 	$viewResult = mysqli_query($con, $sqlViews);
 	$commentResult = mysqli_query($con, $sqlComments);
 	$improvResult = mysqli_query($con, $sqlImprovements);
-	$upvoteResult = mysqli_query($con, $sqlUpvotes);
-	$downvoteResult = mysqli_query($con, $sqlDownvotes);
+	$AccResult = mysqli_query($con, $sqlAccvotes);
+	$FResult = mysqli_query($con, $sqlFvotes);
+	$TResult = mysqli_query($con, $sqlTvotes);
 	
 	
 	if(mysqli_num_rows($viewResult)>0)
@@ -53,27 +55,46 @@
 		$improvCount = 0;
 	}
 	
-	if(mysqli_num_rows($upvoteResult)>0)
+	if(mysqli_num_rows($AccResult)>0)
 	{
-		while($row4 = mysqli_fetch_assoc($upvoteResult))
+		while($row4 = mysqli_fetch_assoc($AccResult))
 		{
-			$upvoteCount = $row4['COUNT(*)'];
+			$avC = $row4['COUNT(*)'];
+			$avSum = $row4['SUM(weight)'];
 		}
+		$avCount = round(($avSum/$avC),2) ; 
 	}
 	else
 	{
-		$upvoteCount = 0;
+		$avCount = 0;
 	}
 	
-	if(mysqli_num_rows($downvoteResult)>0)
+	if(mysqli_num_rows($FResult)>0)
 	{
-		while($row5 = mysqli_fetch_assoc($downvoteResult))
+		while($row5 = mysqli_fetch_assoc($FResult))
 		{
-			$downvoteCount = $row5['COUNT(*)'];
+			$fvC = $row5['COUNT(*)'];
+			$fvSum = $row5['SUM(weight)'];
 		}
+		$fvCount = round(($fvSum/$fvC),2) ; 
 	}
 	else
 	{
-		$downvoteCount = 0;
+		$fvCount = 0;
 	}
+	if(mysqli_num_rows($TResult)>0)
+	{
+		while($row6 = mysqli_fetch_assoc($TResult))
+		{
+			$tvC = $row6['COUNT(*)'];
+			$tvSum = $row6['SUM(weight)'];
+		}
+		$tvCount = round(($tvSum/$tvC),2) ; 
+	}
+	else
+	{
+		$tvCount = 0;
+	}
+
+	
 ?>

@@ -41,8 +41,8 @@ if(isset($_POST['submitted']) == 1){
    {
 
    }
-
-	
+  
+   include("rewardcheck.php"); 	//reward checking;
 $postSet = "INSERT INTO post (postId, userId, faculty, department, category, title, content, date, files) VALUES ('$postId','$usrid','$_POST[faculty]','$_POST[department]', '$_POST[category]', '$_POST[title]', '$_POST[message]', now(), '$input')";
 $posts = mysqli_query($con, $postSet) or die(mysqli_error());	
 if ($posts) {

@@ -93,7 +93,7 @@ $_SESSION['imagepath'] = $row['img'];
 <div class="form-group">
 <label for="fnam">Type</label>
 <select name="type">
-  <option value="Comments" <?php if (!empty($instruction) && $instruction == 'comments')  echo 'selected = "selected"'; ?>>Comments</option>
+  <option value="Improvement" <?php if (!empty($instruction) && $instruction == 'Improvement')  echo 'selected = "selected"'; ?>>Improvement</option>
 <option value="vote" <?php if (!empty($instruction) && $instruction == 'vote')  echo 'selected = "selected"'; ?>>Vote</option>
 <option value="submission" <?php if (!empty($instruction) && $instruction == 'submission')  echo 'selected = "selected"'; ?>>Submission</option>
 </select>
@@ -120,6 +120,7 @@ $_SESSION['imagepath'] = $row['img'];
 
 <div class="form-group">
 <button type="submit" class="btn btn-primary" value="submit">Edit </button>
+<button type="" class="btn btn-primary" value="">Cancel </button>
 </div>
 <input type="hidden" name="postid" value="<?php echo $row['id']; ?>">
 </form>

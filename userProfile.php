@@ -1,4 +1,11 @@
+<?php
+  session_start();
+  $userNo = $_SESSION['userid'] ;
+  
+  
+  
 
+?>
 <!--catch the user id-->
 	<?php
 	$Id = $_GET['id'];
@@ -23,12 +30,9 @@
            
         <link rel="stylesheet" href="themes_panel.css">	
         
-			<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+			     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
-
-
-
-<title>ideapool Admin Page</title>
+                <title>ideapool Admin Page</title>
 
 
 
@@ -92,6 +96,14 @@
  
  
 <!--start of navigation bar -->
+<?php 
+include("database_connect.php");
+$sqll="Select * from register where id=".$userNo;
+$result222=mysqli_query($con,$sqll);
+while($row222=mysqli_fetch_array($result222)){
+if($row222['category']=='Operator'){
+
+?>
 
 
 <nav class = "navbar navbar-inverse" role = "navigation">
@@ -117,7 +129,7 @@
 
 
 
- 
+ <?php  } }?>
 
 
 <!-- Search key-->
@@ -125,139 +137,182 @@
 <div id ="tcontent" style="padding-bottom:20px;padding-left:150px;padding-right:50px;border:">
 
 
-		<div id="leftcontent" align="left" style="margin:15px;width:250px;padding-right:5px">
- 			<!--profile pic and two links-->
+		                <div id="leftcontent" align="left" style="margin:15px;width:250px;padding-right:5px;" >
+ 			                                                                          <!--profile pic and two links-->
    
-    																			<?php
+    																			                                     <?php
                                                                                include("database_connect.php");
                                                                                if(mysqli_connect_errno()){
                                                                                    echo "failed to connect to MySQL.".mysqli_connect_error();
                                                                                    }
- $sqlGetData="Select * from register where id=".$Id;
+                                                                                   $sqlGetData="Select * from register where id=".$Id;
                                                                                    $result=mysqli_query($con,$sqlGetData);
                                                                                   
                                                                                
                                                                                 while($row=mysqli_fetch_array($result)){?>
-     <img src="<?php echo $row['Image']; ?>" alt="profile-sample5"/>
+                                                                                 <img src="<?php echo $row['Image']; ?>" class="img-circle person" alt="profile-sample5" style="padding-left: 20px"/>
     
-    <?php }?>
-   																				 <p> </p>
-   																				 <p> </p>
-    																			 <ul class="nav nav-tabs nav-stacked">
-    																			 <li class="active"><a data-toggle="tab" href="#Profile">Profile</a></li>
-    																			 <li><a data-toggle="tab" href="userpost?id=<?=$Id?>.php">Post</a></li>
+                                                                                <?php }?>
+                                             																				 <p> </p>
+                                             																				 <p> </p>
+
+                                                                                    
+                                                                                  <div class="col-3">
+                                                                                           <a href="#Profile" class="btn btn-info" role="button" style="width:200px;background-color: #1aff1a">Profile</a>
+                                                                                         <a href="userProfile_post.php?id=<?=$Id?>" class="btn btn-info" role="button" style="width:200px;background-color: #009900">Post</a>
+                                                                                         
+                                                                                  </div>
+                          
+  </div>
+
+      
+                    <div id="countpro" style="padding-top:10px; margin-left:15px;">
+
+                      <div style="background:#FFFFFF;width:200px">
+                        <a id="about" class="btn btn-info" role="button" style="background-color: #009900; width:200px; font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;">User Activities</a>
+                        <div id="aboutdiv" class="countdetails" style="background-color: #009900;">
+                          <?php include("countUsrActi.php"); //User actions count file?>
+                          <table style=" color:#FFF; margin-top: 0px; font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;">
+                            <tr>
+                              <td style="padding-left:20px;">Submissions</td>
+                              <td style="padding-left:50px;"><?php echo "$submissions[0]<br>"; ?></td>
+                            </tr>
+                            <tr>
+                              <td style="padding-left:20px;">Improvements</td>
+                              <td style="padding-left:50px;"><?php echo "$improvements[0]<br>"; ?></td>
+                            </tr>
+                            <tr>
+                              <td style="padding-left:20px;">Comments</td>
+                              <td style="padding-left:50px;"><?php echo "$comments[0]<br>"; ?></td>
+                            </tr>
+                          </table>
+
+                                                                                           
+                        </div>
+                      </div>
+
+                
+
+                    
+
+
+</div>
+             
+   
+
+    <!--link details-->
+<div id="rightcontent" align="left" style="margin:-174px 15px 15px;width:730px;padding-left:300px;" >
     
-  																				 </ul>
+              <div class="tab-content">
+                           <div id="Profile" class="tab-pane fade in active">
     
-    
-    
-    
-    
-    
-    
-    
-    
-		</div>
-        
-        
-    	<!--user details-->
-    	<div id="rightcontent" align="left" style="margin:-174px 15px 15px;width:730px;padding-left:300px">
-    
-  			<div class="tab-content">
-    				<div id="Profile" class="tab-pane fade in active">
-    
-      																			<?php
+      																			                                   <?php
                                                                                include("database_connect.php");
                                                                                if(mysqli_connect_errno()){
                                                                                    echo "failed to connect to MySQL.".mysqli_connect_error();
                                                                                    }
- $sqlGetData="Select * from register where id=".$Id;
-                                                                                   $result=mysqli_query($con,$sqlGetData);
-                                                                                  
-                                                                               
-                                                                                while($row=mysqli_fetch_array($result)){?>
-    						<div class="row" style="width:785px">
-    								<table>
-    								<tr>
-    								<td style="width:90%">
-      								<h3><?php echo $row['fname']." ".$row['lname']; ?></h3></td>
-      								<td style="padding-left:100px;width:10%"><a href="editUserProfile.php?id=<?=$row["id"]?>"><button type="submit" class="btn btn-primary" name="btn-signup" value="submit" ><img name="edit" src="images/edit.png" width="25" height="25"/></button></a></td>
-      								</tr>
-      								</table>
-   							 </div>   
-      						 <div id="userprofile" style="padding-left:40px;padding-top:10px">
-      									<div style="padding:30px;background:#FFFFFF;width:730px">
-    												<table style="width:730px">
-    												<tr>
-    												<td style="padding-right:70px"><label for="cat">Category</label></td>
-     												<td><label for="cat"><?php echo $row['category'];?> </label></td>
-     												</tr>
-     												<tr>
-     												<td><p> </p>  </td>
-     												<td> <p> </p> </td>
-      												</tr>
-     
-      												<tr>
-    												<td style="padding-right:70px"><label for="uid">University ID</label></td>
-     												<td><label for="uid"><?php echo $row['universityID'];?> </label></td>
-     												</tr>
-     												<tr> 
-     												<td><p> </p>  </td>
-     												<td> <p> </p> </td>
-     												</tr>
-     
-      												<tr>
-    												<td style="padding-right:70px"><label for="em">Email</label></td>
-    											    <td><label for="em"><?php echo $row['emil'];?> </label></td>
-     												</tr>
-     												<tr>
-     												<td><p> </p>  </td>
-     												<td><p> </p>  </td>
-      												</tr>
-     
-      												<tr>
-    												<td style="padding-right:70px"><label for="gen">Gender</label></td>
-     												<td><label for="gen"><?php echo $row['gender'];?> </label></td>
-     												</tr>
-     												<tr> 
-    												<td><p> </p>  </td>
-     												<td> <p> </p> </td>
-     												</tr>
-     
-      												<tr>
-    												<td style="padding-right:70px"><label for="ad">Adress</label></td>
-     												<td><label for="ad"><?php echo $row['address'];?> </label></td>
-     												</tr>
-     												<tr> 
-     												<td> <p> </p> </td>
-     												<td> <p> </p> </td>
-     												</tr>
-     
-      												<tr>
-    												<td style="padding-right:70px"><label for="con">Contact</label></td>
-    												<td><label for="con"><?php echo $row['contact'];?> </label></td>
-     												</tr>
-     												<tr>
-     												<td> <p> </p> </td>
-     												<td> <p> </p> </td>
-      												</tr>
-     												</table>
-    									 </div>
-     							</div>
-      				</div>
+                                                                               $sqlGetData="Select * from register where id=".$Id;
+                                                                               $result=mysqli_query($con,$sqlGetData);
+                                                                               while($row=mysqli_fetch_array($result)){?>
+    						                                                                    <div class="row" style="width:785px">
+                                                                        								<table>
+                                                                        								<tr>
+                                                                        								<td style="width:90%">
+                                                                          								<h3><?php echo $row['fname']." ".$row['lname']; ?></h3></td>
+                                                                          								<?php 
+                                                                                          $sql="Select * from register where id=".$userNo;
+                                                                                         
+                                                                                          $result22=mysqli_query($con,$sql);
+                                                                                          while($row22=mysqli_fetch_array($result22)){
+                                                                                         if($row22['category']!='Operator'){
+
+                                                                                          ?>
+
+
+                                                                                          <td style="padding-left:100px;width:10%"><a href="editUserProfile.php?id=<?=$row["id"]?>"><img name="jsbutton" src="images/edit.png" width="25" height="25" border="0" alt="javascript button"></a></td>
+
+                                                                                          <?php }} ?>
+                                                                          								</tr>
+                                                                          								</table>
+                                                                       							</div>   
+                                                                          					<div id="userprofile" style="padding-left:40px;padding-top:10px">
+                                                                          									<div style="padding:30px;background:#FFFFFF;width:730px">
+                                                                        												<table style="width:730px">
+                                                                        												<tr>
+                                                                        												<td style="padding-right:70px"><label for="cat">Category</label></td>
+                                                                         												<td><label for="cat"><?php echo $row['category'];?> </label></td>
+                                                                         												</tr>
+                                                                         												<tr>
+                                                                         												<td><p> </p>  </td>
+                                                                         												<td> <p> </p> </td>
+                                                                          											</tr>
+                                                                         
+                                                                          											<tr>
+                                                                        												<td style="padding-right:70px"><label for="uid">University ID</label></td>
+                                                                         												<td><label for="uid"><?php echo $row['universityID'];?> </label></td>
+                                                                         												</tr>
+                                                                         												<tr> 
+                                                                         												<td><p> </p>  </td>
+                                                                         												<td> <p> </p> </td>
+                                                                         												</tr>
+                                                                         
+                                                                          											<tr>
+                                                                        												<td style="padding-right:70px"><label for="em">Email</label></td>
+                                                                        											  <td><label for="em"><?php echo $row['emil'];?> </label></td>
+                                                                         												</tr>
+                                                                         												<tr>
+                                                                         												<td><p> </p>  </td>
+                                                                         												<td><p> </p>  </td>
+                                                                          											</tr>
+                                                                         
+                                                                          											<tr>
+                                                                        												<td style="padding-right:70px"><label for="gen">Gender</label></td>
+                                                                         												<td><label for="gen"><?php echo $row['gender'];?> </label></td>
+                                                                         												</tr>
+                                                                         												<tr> 
+                                                                        												<td><p> </p>  </td>
+                                                                         												<td> <p> </p> </td>
+                                                                         												</tr>
+                                                                         
+                                                                          											<tr>
+                                                                        												<td style="padding-right:70px"><label for="ad">Adress</label></td>
+                                                                         												<td><label for="ad"><?php echo $row['address'];?> </label></td>
+                                                                         												</tr>
+                                                                         												<tr> 
+                                                                         												<td> <p> </p> </td>
+                                                                         												<td> <p> </p> </td>
+                                                                         												</tr>
+                                                                         
+                                                                          											<tr>
+                                                                        												<td style="padding-right:70px"><label for="con">Contact</label></td>
+                                                                        												<td><label for="con"><?php echo $row['contact'];?> </label></td>
+                                                                         												</tr>
+                                                                         												<tr>
+                                                                         												<td> <p> </p> </td>
+                                                                         												<td> <p> </p> </td>
+                                                                          											</tr>
+                                                                         												</table>
+    									                                                                      </div>
+     							                                                                  </div>
+                                                                                    <?php } ?>
+      				             </div>
       
-      
-      
-      
-      <?php } ?>
-    		</div>
-  
-    
-  		</div>
-   </div>
- </div>
+                        
  
+      
+      
+    		         </div>
+
+          
+             </div>
+               <?php
+                include("userprofilereward.php");
+               ?>
  
+     </div>
+
+
+
  
  
  

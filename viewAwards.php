@@ -31,7 +31,7 @@ echo "failed to connect to MySQL.".mysqli_connect_error();
 if ( isset($_GET['sendId'])){
 $sendID = $_GET['sendId'];
 echo "<script> window.postid = ".$sendID." </script>";
-$result=mysqli_query($con,"Select * from awards where id='".$sendID."' ");
+$result=mysqli_query($con,"Select * from reward where id='".$sendID."' ");
 if (!$result) {
 printf("Error: %s\n", mysqli_error($con));
 exit();
@@ -44,14 +44,18 @@ while($row=mysqli_fetch_array($result)){?>
 <input type="text" class="form-control" name="post" value="<?php echo $row['name'] ?>">
 </div>
 
+<?php $instruction = $row['type']; 
+?>
+
 <div class="form-group">
 <label for="fnam">Type</label>
-<select name="list1">
-  <option name="s" value="Student">Comments</option>
-  <option name="l" value="Lecturere">vote</option>
-  <option name="o" value="Operator">submission</option>
-  </select>
+<select name="type">
+  <option value="Improvement" <?php if (!empty($instruction) && $instruction == 'Improvement')  echo 'selected = "selected"'; ?>>Improvement</option>
+<option value="vote" <?php if (!empty($instruction) && $instruction == 'vote')  echo 'selected = "selected"'; ?>>Vote</option>
+<option value="submission" <?php if (!empty($instruction) && $instruction == 'submission')  echo 'selected = "selected"'; ?>>Submission</option>
+</select>
 </div>
+
 <div class="form-group">
 <label for="lnam">Level</label>
 <input type="text" class="form-control" name="department" value="<?php echo $row['level'] ?>">

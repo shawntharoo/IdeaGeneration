@@ -7,6 +7,18 @@
 <link rel="stylesheet" href="css/bootstrap.min.css"></link>
 
 <!-- bootstrap table scripts -->
+<style type="text/css">
+#caption {
+    position: relative;
+}
+#caption LevelImg {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+</style>
+
 <script>
 
   function exefunction(){
@@ -40,7 +52,7 @@ include('header.php');
 <nav class = "navbar navbar-inverse" role = "navigation">
    
            <div class = "navbar-header" style="font-size:20px">
-              <a class = "navbar-brand" href = "#">Admin Page</a>
+              <a class = "navbar-brand" href = "adminPanel.php">Admin Panel</a>
            </div>
            
            <div style="font-size:20px">
@@ -66,7 +78,7 @@ include('header.php');
 <div class="row">
 <div class="col-md-12">
 <br/>
-<h4>All Badges Given for the Comments </h4>
+<h4>All Badges Given for the Improvement </h4>
 <br/>
 <?php
 include("database_connect.php");
@@ -74,10 +86,8 @@ include("database_connect.php");
 if(mysqli_connect_errno()){
 echo "failed to connect to MySQL.".mysqli_connect_error();
 }
-$query = "select * from reward where type = 'comments'";
+$query = "select * from reward where type = 'improvement'";
 $result=mysqli_query($con,$query);
-
-
 ?>
 <tr class="info">
 <div class="row">
@@ -86,7 +96,7 @@ $result=mysqli_query($con,$query);
   <div class="col-xs-6 col-md-3">
     <div class="thumbnail">
       <div class="caption">
-      <img src="<?php echo $row['img']?>" height="120px" width="115px" align="middle">
+      <img src="<?php echo $row['img']?>" height="120px" width="115px" align="middle"><img class="LevelImg" src="images/201SN_full.jpg" height="50px" width="60px">
         <p>Badge ID : <?php echo $row['id'] ?></p>
         <p>Badge Name : <?php echo $row['name']; ?></p>
         <p>Badge Type        : <?php echo $row['type'] ?></p>

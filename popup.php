@@ -31,17 +31,17 @@ function closeWin() {
 
 <!-- load the selected submission details to textboxes-->
  <?php
-	   include("database_connect.php");
-		
-	   if(mysqli_connect_errno()){
-		   echo "failed to connect to MySQL.".mysqli_connect_error();
-		   }
-		   
-		if ( isset($_GET['postId'])){
-			$postID = $_GET['postId'];
-			echo "<script> window.postid = ".$postID." </script>";
-			$result=mysqli_query($con,"Select p.postId,p.content,p.faculty,p.department from post p where p.postId='".$postID."' ");
-		               if (!$result) {
+     include("database_connect.php");
+    
+     if(mysqli_connect_errno()){
+       echo "failed to connect to MySQL.".mysqli_connect_error();
+       }
+       
+    if ( isset($_GET['postId'])){
+      $postID = $_GET['postId'];
+      echo "<script> window.postid = ".$postID." </script>";
+      $result=mysqli_query($con,"Select p.postId,p.content,p.faculty,p.department from post p where p.postId='".$postID."' ");
+                   if (!$result) {
                            printf("Error: %s\n", mysqli_error($con));
                            exit();
                        }
@@ -76,17 +76,17 @@ function closeWin() {
 
 
 <!--update the post(submission table)-->
-			<?php 
+      <?php 
                 if(isset($_POST['faculty'])) {
-                    echo "hahhaa";
+                    
                     echo $_POST['postid'];
                     echo $_POST['faculty'];
                     echo $_POST['post'];
-                    echo $_POST['department'];	
+                    echo $_POST['department'];  
                     include('database_connect.php');
                      if(mysqli_connect_errno()){
                                echo "failed to connect to MySQL.".mysqli_connect_error();
-                               }				   
+                               }           
                     try {
                         echo "Done";
             
@@ -94,9 +94,9 @@ function closeWin() {
                       
                         echo "Updated !";
                         mysqli_query($con, $sqluq);
-						
+            
                         echo "<script>window.close();</script>";
-						
+            
     
 
                     }

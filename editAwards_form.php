@@ -20,7 +20,7 @@ $done = move_uploaded_file($source,$destination);
 	}
  $sqluq="update reward set name='".$name."',level='".$level."',type='".$type."',description='".$discription."',postcount='".$postcount."',img='".$input."' WHERE id='".$eid."'";
  mysqli_query($con,$sqluq);
- //header('Location: awardDisplay.php');
+ header('Location: awardDisplay.php');
 }
 
 ?>

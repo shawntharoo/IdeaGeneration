@@ -33,7 +33,7 @@
 		if(isset($_SESSION["name"])&&$_SESSION["level"]=='Operator')
 		{
 			?>
-          <a class="btn btn-danger btndanger" href="editSubmissionCompu.php">Admin</a>
+          <a class="btn btn-danger btndanger" href="adminPanel.php">Admin</a>
            <?php
 		}
 		?>

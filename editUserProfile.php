@@ -87,35 +87,6 @@
  ?>
  
  
- 
-<!--start of navigation bar -->
-
-
-<nav class = "navbar navbar-inverse" role = "navigation">
-   
-           <div class = "navbar-header" style="font-size:20px">
-              <a class = "navbar-brand" href = "#">Admin Page</a>
-           </div>
-           
-           <div style="font-size:20px">
-          
-                            <div class="nav">
-                                          <ul class = "nav navbar-nav pull-right">
-                                                <li class = "active"><a href = "SearchUser.php">Users</a></li>
-                                                <li class = "active"><a href = "editSubmissionCompu.php">Submission</a></li>
-                                                 <li class = "active"><a href = "newusers.php">New Users</a></li>
-                                                <li class = "active"><a href = "allusers.php">Current User</a></li>
-                                                 
-                                          </ul>
-                             </div>
-              </div>
-
-</nav>
-
-
-
- 
-
 
 
 
@@ -123,38 +94,33 @@
 
 
 <div id="leftcontent" align="left" style="margin:15px;width:250px;padding-right:5px">
-  <!--links-->
+                                                                                <!--profile pic and two links-->
    
-    																			<?php
+                                                                               <?php
                                                                                include("database_connect.php");
                                                                                if(mysqli_connect_errno()){
                                                                                    echo "failed to connect to MySQL.".mysqli_connect_error();
                                                                                    }
- $sqlGetData="Select * from register where id=".$Id;
+                                                                                   $sqlGetData="Select * from register where id=".$Id;
                                                                                    $result=mysqli_query($con,$sqlGetData);
                                                                                   
                                                                                
                                                                                 while($row=mysqli_fetch_array($result)){?>
-     <img src="<?php echo $row['Image']; ?>" alt="profile-sample5" class="profile" />
+                                                                                 <img src="<?php echo $row['Image']; ?>" class="img-circle person" alt="profile-sample5" style="padding-left: 20px"/>
     
-    																			<?php }?>
-    																			<p> </p>
-    																			<p> </p>
-    																			<ul class="nav nav-tabs nav-stacked">
-    																			<li class="active"><a data-toggle="tab" href="#userprofile">Profile</a></li>
-    																			<li><a data-toggle="tab" href="userProfile_post.php">Post</a></li>
+                                                                                <?php }?>
+                                                                                     <p> </p>
+                                                                                     <p> </p>
+                                                                                    
+                                                                                    <div class="col-3">
+                                                                                             <a href="userProfile.php?id=<?=$Id?>" class="btn btn-info" role="button" style="width:200px;background-color: #009900">Profile</a>
+                                                                                           <a href="#post" class="btn btn-info" role="button" style="width:200px;background-color: #1aff1a">Post</a>
+                                                                                           
+                                                                                    </div>
     
-  																				</ul>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</div>
+        
+                    </div>
+
  
 <div id="rightcontent" align="left" style="margin:-174px 15px 15px;width:730px;padding-left:300px">
     

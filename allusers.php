@@ -90,6 +90,7 @@ $result=mysqli_query($con,$query);
         <p>Registered ID : <?php echo $row['id'] ?></p>
         <p>University ID : <?php echo $row['universityID']; ?></p>
         <p>Gender        : <?php echo $row['gender'] ?></p>
+        <p>Address       : <?php echo $row['address'] ?></p>
 		<p>Category      : <?php echo $row['category'] ?></p>
 		<p>Email         : <?php echo $row['emil']; ?></p>
 		<p>Contact No    : <?php echo $row['contact']?></p>

@@ -24,7 +24,24 @@ function autoIncrementIds($type)
 			}
 	}
 	elseif (strcmp($type,'Vote')==0){
-			$sqlGetData = "SELECT voteId FROM votes WHERE date = (SELECT max(date) FROM votes)";
+			$sqlnew = "SELECT voteId FROM votes";
+			$resultnew = mysqli_query($con,$sqlnew);
+			if(mysqli_num_rows($resultnew) > 0) {
+			$i =0;
+			 while($row = mysqli_fetch_assoc($resultnew)) {
+       				$id = $row["voteId"];
+
+       				$oldidarray = explode("_",$id);
+			  		$oldid[$i] = $oldidarray[1];
+			  		$i = $i+1;
+  			  }
+			  
+			  rsort($oldid);
+
+			  $newid = "V_".($oldid[0]+1);
+
+
+			/*$sqlGetData = "SELECT voteId FROM votes WHERE date = (SELECT max(date) FROM votes)";
 			$result = mysqli_query($con,$sqlGetData);
 
 			if (mysqli_num_rows($result) > 0) {
@@ -33,7 +50,7 @@ function autoIncrementIds($type)
        				$id = $row["voteId"];
   			  }
 			  $newidarray = explode("_",$id);
-			  $newid = $newidarray[0] . "_" . ($newidarray[1]+1);
+			  $newid = $newidarray[0] . "_" . ($newidarray[1]+1);*/
 			  
 			}
 			else

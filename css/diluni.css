@@ -30,6 +30,19 @@
 	display:none;
 	}
 	
+.countdetails{
+	
+	width: 200px;
+	height: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	border-bottom: 1px solid #999;
+	border-right: 1px solid #999;
+	border-left: 1px solid #999;
+	border-top: 1px solid #999;
+	margin-left:0px; 
+	
+	}
 		
 .details:-moz-placeholder {
   color: #999;

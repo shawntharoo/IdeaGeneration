@@ -1,3 +1,4 @@
+
 <?php 
 
 include('database_connect.php');
@@ -26,6 +27,9 @@ $totalRows_catSet = mysqli_num_rows($catSet);
 
 ?>
 
+
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -39,9 +43,40 @@ $totalRows_catSet = mysqli_num_rows($catSet);
    <script src="js/SpryValidationTextField.js" type="text/javascript"></script>
     <script src="js/SpryValidationTextField.js" type="text/javascript"></script>
         <script src="js/SpryValidationTextarea.js" type="text/javascript"></script>    
-        <link rel="stylesheet" href="themes_panel.css">	
+        <link rel="stylesheet" href="themes_panel.css"> 
          <link href="css/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
+   
+   
 
+
+
+
+<!-- popup the edit window -->
+<script>
+function pop_up(url){
+window.open(url,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=1000,height=500,directories=no,location=no') 
+}
+
+
+
+
+//jQuery Library Comes First
+//Bootstrap Library
+$( document ).ready(function() {       
+    $('#myModal').on('show.bs.modal', function (e) { //Modal Event
+        var id = $(e.relatedTarget).data('id'); //Fetch id from modal trigger button
+    $.ajax({
+      type : 'post',
+       url : 'file.php', //Here you will fetch records 
+      data :  'post_id='+ id, //Pass $id
+      success : function(data){
+         $('.form-data').html(data);//Show fetched data from database
+       }
+    });
+    });
+});
+</script>
+<!-- end of the popup window -->
 
 
 
@@ -59,22 +94,11 @@ $totalRows_catSet = mysqli_num_rows($catSet);
 
 .tablecontent
 {
-	margin-left:20em;
-	margin-left:20em;
-	margin-top:7em;
-	margin-bottom:10em;
-	
-}
-
-.border
-{
-    width: 125px;
-    height: 100px;
-    border : 3px solid rgb(229, 255, 255);
-}
- body {
-	background-image:url(images/body.jpg);
-
+  margin-left:20em;
+  margin-left:20em;
+  margin-top:7em;
+  margin-bottom:10em;
+  
 }
 
 .profile {
@@ -87,70 +111,31 @@ $totalRows_catSet = mysqli_num_rows($catSet);
   opacity: 1;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
+
+
+
+.border
+{
+    width: 125px;
+    height: 100px;
+    border : 3px solid rgb(229, 255, 255);
+}
+ body {
+  background-image:url(images/body.jpg);
+
+}
+
 </style>
 
 <!-- end of the body style -->
 
 
 
-
-   
-<!-- bootstrap table scripts -->
-<script>
-
-$(document).ready(function(){
-$("#mytable #checkall").click(function () {
-        if ($("#mytable #checkall").is(':checked')) {
-            $("#mytable input[type=checkbox]").each(function () {
-                $(this).prop("checked", true);
-            });
-
-        } else {
-            $("#mytable input[type=checkbox]").each(function () {
-                $(this).prop("checked", false);
-            });
-        }
-    });
-    
-    $("[data-toggle=tooltip]").tooltip();
-});
-
-
-
-
-
-</script>
-<!-- end of the boostrap table script -->
-
- 
-
-
-<script>
-//jQuery Library Comes First
-//Bootstrap Library
-$( document ).ready(function() {       
-    $('#myModal').on('show.bs.modal', function (e) { //Modal Event
-        var id = $(e.relatedTarget).data('id'); //Fetch id from modal trigger button
-    $.ajax({
-      type : 'post',
-       url : 'file.php', //Here you will fetch records 
-      data :  'post_id='+ id, //Pass $id
-      success : function(data){
-         $('.form-data').html(data);//Show fetched data from database
-       }
-    });
-    });
-});
-</script>
-
-
-
-
-
 </head>
-
 <body>
 
+
+<!-- header-->
 
 
 <!-- header-->
@@ -159,7 +144,10 @@ $( document ).ready(function() {
  
   include('header.php');
  ?>
- 
+  
+
+<!--start of navigation bar -->
+
  
  
 <!--start of navigation bar -->
@@ -195,7 +183,7 @@ $( document ).ready(function() {
 
 <div id ="tablecontent" style="padding-bottom:100px">
            <div class="container">
-	                <div class="row">
+                  <div class="row">
                           
                             
  <!-- select the faculty and department -->
@@ -210,10 +198,10 @@ $( document ).ready(function() {
 <div id="aboutdiv" class="details">
    <div class="gallery">
       <?php do { ?>
-      	<div class="selimg" id="<?php echo $row_facultySet['facName']; ?>">
+        <div class="selimg" id="<?php echo $row_facultySet['facName']; ?>">
           <div class="col-md-2 box">
-          	<figure><img src="<?php echo $row_facultySet['facImg']; ?>" class="border" width="100px" height="100px"/></figure>
-          	<h5 align="center"><?php echo $row_facultySet['facName']; ?></h5>
+            <figure><img src="<?php echo $row_facultySet['facImg']; ?>" class="border" width="100px" height="100px"/></figure>
+            <h5 align="center"><?php echo $row_facultySet['facName']; ?></h5>
           </div>
         </div>
         <?php } while ($row_facultySet = mysqli_fetch_assoc($facultySet)); ?>
@@ -233,10 +221,10 @@ $( document ).ready(function() {
 <div id="aboutdiv1" class="details">
    <div class="gallery">
       <?php do { ?>     
-      	<div class="selimg1" id="<?php echo $row_depSet['depName']; ?>">
+        <div class="selimg1" id="<?php echo $row_depSet['depName']; ?>">
           <div class="col-md-2 box">
-          	<figure><img src="<?php echo $row_depSet['depImg']; ?>" class="border" width="100px" height="100px"/></figure>
-          	<h5 align="center"><?php echo $row_depSet['depName']; ?></h5>
+            <figure><img src="<?php echo $row_depSet['depImg']; ?>" class="border" width="100px" height="100px"/></figure>
+            <h5 align="center"><?php echo $row_depSet['depName']; ?></h5>
           </div>
         </div>        
         <?php } while ($row_depSet = mysqli_fetch_assoc($depSet)); ?>       
@@ -255,10 +243,10 @@ $( document ).ready(function() {
 <div id="aboutdiv2" class="details">
    <div class="gallery">
       <?php do { ?>
-      	<div class="selimg2" id="<?php echo $row_catSet['name']; ?>">
+        <div class="selimg2" id="<?php echo $row_catSet['name']; ?>">
           <div class="col-md-2 box">
-       		<figure><img src="<?php echo $row_catSet['image']; ?>" class="border" width="100px" height="100px"/></figure>
-         	<h5 align="center"><div id="catname"><?php echo $row_catSet['name']; ?></div></h5>
+          <figure><img src="<?php echo $row_catSet['image']; ?>" class="border" width="100px" height="100px"/></figure>
+          <h5 align="center"><div id="catname"><?php echo $row_catSet['name']; ?></div></h5>
           </div>
         </div>
         <?php } while ($row_catSet = mysqli_fetch_assoc($catSet)); ?>
@@ -272,21 +260,25 @@ $( document ).ready(function() {
 
 
 </form> </div> 
-             
-      
-                            
-                           <?php 
-				if(isset($_POST['submitted']) == 1){
+                    <?php 
+        if(isset($_POST['submitted']) == 1){
 
-						   
-						   ?>    
-         
-  <div class="col-md-12">
-                            
-                                               <div class="table-responsive">
+               
+               ?>
+      
+  
+
+<!-- load the submission to the table-->
+
+<div id ="tablecontent">
+           <div class="container">
+                  <div class="row">
+                            <div class="col-md-12">
+                                    
+                                            <div class="table-responsive">
                                                             <table id="mytable" class="table table-bordred table-striped">
                                                                        <thead>
-                                                                       <th> </th>
+                                                                      
                                                                        <th>Post ID</th>
                                                                        <th>User</th>
                                                                        <th>Submission</th>
@@ -297,144 +289,170 @@ $( document ).ready(function() {
                                                                        </thead>
                                                                        <tbody>
                                                                        <tr>
-                              												  <?php
+                                                        <?php
                                                                                include("database_connect.php");
                                                                                if(mysqli_connect_errno()){
                                                                                    echo "failed to connect to MySQL.".mysqli_connect_error();
                                                                                    }
- $sqlGetData="Select p.postId,u.Image,p.content,p.department,p.dateTime from post p,register u where p.userId=u.id and p.faculty='$_POST[faculty]' and p.department='$_POST[department]' and p.category='$_POST[category]'";
+                                                                                   
+                                                                                   $sqlGetData="Select p.postId,u.id,u.Image,p.content,p.department,p.dateTime from post p,register u where p.userId=u.id and p.faculty='$_POST[faculty]' and p.department='$_POST[department]' and p.category='$_POST[category]'";
                                                                                    $result=mysqli_query($con,$sqlGetData);
                                                                                   
                                                                                
                                                                                 while($row=mysqli_fetch_array($result)){?>
                                                                             <tr>
-                                                                            <td><input type="checkbox" class="checkthis" /></td>
+                                                                            
                                                                             <td><?php echo $row['postId'] ?></td>
                                                                           
-                                                                             <td><img src="<?php echo $row['Image']?>" class="profile"/></td>
-                                                                            <td><?php echo $row['content']?></td>
+                                                                             <td><a href="userProfile.php?id=<?=$row["id"]?>"><img src="<?php echo $row['Image']?>" class="profile"/></td>
+                                                                            <td><a href="viewidea.php?id=<?=$row["postId"]?>"><?php echo $row['content']?></a></td>
                                                                             <td><?php echo $row['department']; ?></td>
                                                                             <td><?php echo $row['dateTime']; ?></td>
-                                                                            <td><a button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" href="myModal"><img name="jsbutton" src="images/edit.png" width="25" height="25" border="0" alt="javascript button"></a></td>
-                              
-                              <td><span data-placement="top" data-toggle="tooltip" title="Show"><a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editBox" data-id="<?php echo $row['postId']->id;?>"><img name="jsbutton" src="images/delete.png" width="25" height="25" border="0" alt="javascript button"></a></span></td>
+                                                                            <td><a href="popup.php?postId=<?= $row['postId'] ?>" onclick="pop_up(this);return false;"><img name="jsbutton" src="images/edit.png" width="25" height="25" border="0" alt="javascript button"></a></td>
+                                                                            
+                                                                            
+                                                                            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="<?= $row['postId'] ?>"><img name="jsbutton" src="images/delete.png" width="25" height="25" border="0" alt="javascript button"></button></td>
+
+
+
                                                                             </tr>
-                                                                            </tr>
+                                                                            
                                                                               <?php
-                                                                                  }
+                                                                                   }}
                                                                               ?>
                                                                             </tbody>
         
                                                              </table>
                                                 </div>
-                                                </div>
-                                                <?php } ?>
- 
- </div>
- </div>
- </div>
-
-
-
-
-
-
-
-  <div class="modal fade" id="editBox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><center>Heading</center></h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-data">
-                
-                
-                
-                </div> //Here Will show the Data
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default">Submit</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
+            
+                                   </div>
+                    </div>
+          </div>      
 </div>
 
 
 
 
- 
 
 
- 
- 
- 
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Confirm the deletion</h4>
+      </div>
+      <form  method="POST" action="editSubmissiondelete.php">
+      <div class="modal-body">
+        
+          <div class="form-group">
+            <label for="postId2" class="control-label">If you delete this record you will lost this permanently.Do you really want to delete this record ?</label>
+            <input type="hidden" class="form-control" id="postId" name="postId2">
+          </div>
+         
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" name="deleteconfirm" value="submit">Delete</button>
+
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+$('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var pid = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('Confirm the delete of post ' + pid)
+  modal.find('.modal-body input').val(pid)
+})
+
+</script>
+
+
+
 <script>
-	 
+
+
+
+
+   
  $(document).ready(function() { 
   
   $("#about").click(function() {
-	  if($('#aboutdiv').is(":hidden")) {
-		  $('#aboutdiv1').slideUp('slow');
-		  $('#aboutdiv2').slideUp('slow');
-		  $("#aboutdiv").slideDown('slow');
-		  }
-	  else{
-		  $('#aboutdiv').slideUp('slow');
-		  }
-	  }); 
-	  
-	  
-	  $("#about1").click(function() {
-	  if($('#aboutdiv1').is(":hidden")) {
-		  $('#aboutdiv').slideUp('slow');
-		  $('#aboutdiv2').slideUp('slow');
-		  $('#aboutdiv1').slideDown('slow');
-		  }
-	  else{
-		  $('#aboutdiv1').slideUp('slow');
-		  }
-	  }); 
+    if($('#aboutdiv').is(":hidden")) {
+      $('#aboutdiv1').slideUp('slow');
+      $('#aboutdiv2').slideUp('slow');
+      $("#aboutdiv").slideDown('slow');
+      }
+    else{
+      $('#aboutdiv').slideUp('slow');
+      }
+    }); 
+    
+    
+    $("#about1").click(function() {
+    if($('#aboutdiv1').is(":hidden")) {
+      $('#aboutdiv').slideUp('slow');
+      $('#aboutdiv2').slideUp('slow');
+      $('#aboutdiv1').slideDown('slow');
+      }
+    else{
+      $('#aboutdiv1').slideUp('slow');
+      }
+    }); 
 
   $("#about2").click(function() {
-	  if($('#aboutdiv2').is(":hidden")) {
-		  $('#aboutdiv').slideUp('slow');
-		  $('#aboutdiv1').slideUp('slow');
-		  $('#aboutdiv2').slideDown('slow');
-		  }
-	  else{
-		  $('#aboutdiv2').slideUp('slow');
-		  }
-	  }); 
-	 
-	 
-	   $(".selimg").click(function(event) {
-			//alert(this.id);
-			var input = document.getElementById("about");
-			input.value = this.id;
-			$('#aboutdiv').slideUp('slow');
+    if($('#aboutdiv2').is(":hidden")) {
+      $('#aboutdiv').slideUp('slow');
+      $('#aboutdiv1').slideUp('slow');
+      $('#aboutdiv2').slideDown('slow');
+      }
+    else{
+      $('#aboutdiv2').slideUp('slow');
+      }
+    }); 
+   
+   
+     $(".selimg").click(function(event) {
+      //alert(this.id);
+      var input = document.getElementById("about");
+      input.value = this.id;
+      $('#aboutdiv').slideUp('slow');
 
-	  });
-	  	 	
-		 
-		$(".selimg1").click(function(event) {
-			//alert(this.id);
-			var input = document.getElementById("about1");
-			input.value = this.id;
-			$('#aboutdiv1').slideUp('slow');
-			
+    });
+        
+     
+    $(".selimg1").click(function(event) {
+      //alert(this.id);
+      var input = document.getElementById("about1");
+      input.value = this.id;
+      $('#aboutdiv1').slideUp('slow');
+      
 
-	  });
-	  
-	  	$(".selimg2").click(function(event) {
-			//alert(this.id);
-			var input = document.getElementById("about2");
-			input.value = this.id;
-			$('#aboutdiv2').slideUp('slow');
+    });
+    
+      $(".selimg2").click(function(event) {
+      //alert(this.id);
+      var input = document.getElementById("about2");
+      input.value = this.id;
+      $('#aboutdiv2').slideUp('slow');
 
-	  });
+    });
 });
  
  
@@ -454,21 +472,6 @@ var sprytextfield4 = new Spry.Widget.ValidationTextField("sprytextfield4");
  
  
  
- 
- 
- 
-<footer>
-
-
- 
-<?php
- include('footer.php');
-?>
-  
-
-
-</footer>
-
 
 </body>
 </html>

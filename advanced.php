@@ -4,13 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    <link rel="stylesheet" href="css/bootstrap.min.css"></link>
  <link rel="stylesheet" href="css/ideacss.css" />
+  <link rel="stylesheet" href="css/slider.css" />
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic' rel='stylesheet' type='text/css'>
  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
  <script type="text/javascript" src="js/jquery-2.2.3.js"></script> 
  <script type="text/javascript" src="js/jquery-ui.js"></script>
-  
+   <script type="text/javascript" src="js/bootstrap-slider.js"></script>
  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+ 
+ </script>
 
 </head>
 <body>
@@ -26,7 +30,7 @@
 <h4 class="panel-title" align="center">Find Submissions</h4>
 </div>
 <div class="panel-body">
-<form method="POST" action="advancedaction.php"  >
+<form method="POST" action="advancedaction.php" onsubmit="return check()">
    <div class="form-group fgroup">
     <label for="title">Enter Keywords</label>
     <input type="text" class="form-control" name="title" placeholder="Title ....">
@@ -79,6 +83,9 @@
                
                  });
                  </script> 
+                
+              
+                  
       </div>
       <hr/>
   <div class="form-group fgroup">

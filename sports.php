@@ -137,6 +137,9 @@
 		       
 				   $photo=$row5["Image"];
 				   $GLOBALS["name"]=$row5["lname"];
+           $reward=$row5["reward"];
+           $reward2=$row5["reward2"];
+           $reward3=$row5["reward3"];
 				   
 			 }
 	        
@@ -153,6 +156,90 @@
               
                  <div class="row">
                 <img src=<?= $photo ?> width="100" height="100" class="img img-thumbnail"/>
+                 </div>
+                  
+                   <div class="row">
+                    <?php
+
+                      $rewardimg=NULL;
+                      $rewardimg2=NULL;
+                      $rewardimg3=NULL;
+                      $sql6="select img,name from reward where level='$reward' and type='submission'";
+                      $result6=mysqli_query($con,$sql6);
+                        while($row6 = mysqli_fetch_array($result6))
+                        {
+
+                          $rewardimg=$row6["img"];
+                          $title=$row6["name"];
+                        }
+                           if($rewardimg!=NULL)
+                         {
+                      ?>
+                     <img src=<?= $rewardimg ?> width="40" height="30" data-toggle="tooltip" data-placement="bottom" title=<?=$title?> />
+                     
+
+                     <?php
+                      }
+                     ?>
+
+                    <?php
+                    
+                            
+                          $sql7="select img,name from reward where level='$reward2' and type='vote'";
+                          
+                         
+                          $result7=mysqli_query($con,$sql7);
+                        while($row7= mysqli_fetch_array($result7))
+                        {
+
+                         
+                          $rewardimg2=$row7["img"];
+                          $title2=$row6["name"];
+                        
+
+                        }
+                      
+                            if($rewardimg2!=NULL)
+                         {
+                           ?>
+                    
+
+                     <img src=<?= $rewardimg2 ?> width="35" height="30" data-toggle="tooltip" data-placement="bottom" title=<?=$title2?> />
+                    
+                      
+                      <?php
+
+                     }
+                     ?>
+
+                      <?php
+                  
+                          $sql7="select img,name from reward where level='$reward3' and type='improvement'";
+                          
+                         
+                          $result7=mysqli_query($con,$sql7);
+                    
+                        while($row7= mysqli_fetch_array($result7))
+                        {
+
+                         
+                          $rewardimg3=$row7["img"];
+                          $title3=$row6["name"];
+
+                        }
+                     
+                         if($rewardimg3!=NULL)
+                         {
+                           ?>
+                         
+                       
+
+                     <img src=<?= $rewardimg3 ?> width="35" height="30" data-toggle="tooltip" data-placement="bottom" title=<?=$title3?> />
+
+                    <?php
+
+                     }
+                    ?>
                  </div>
                  <div class="row">
                  
