@@ -8,14 +8,9 @@
     <link href="css/ideacss.css" rel="stylesheet">
     </head>
 <body>
-
-  <div class="container-fluid header">
-       <div class="row headerrow">
-          <div class="col-md-4">
-            <img src="images/logo.png" class="img img-responsive"/>
-          </div>
-        </div>  
-  </div> 
+ <?php
+ include('header.php');
+ ?>
 <div class="jumbotron">
   <h1>Hello, Welcome  
   <?php 
@@ -30,15 +25,10 @@ echo $_SESSION['users_fname'];
   <p align="center">Within 24 hours you will be recieving your login credentials.</p>
   <p align="center">Please check your Email</p>
   <p align="center"><a class="btn btn-primary btn-lg" href="login.php" role="button">Login</a></p>
-</div>
-
- <div class="container-fluid header">
-       <div class="row headerrow">
-          <div class="col-md-4">
-            <img src="images/logo.png" class="img img-responsive"/>
-          </div>
-        </div>  
-  </div> 
+</div> 
+  <?php
+ include('footer.php');
+?>
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
