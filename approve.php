@@ -1,4 +1,13 @@
-
+<?php
+include('database_connect.php');
+if(isset($_GET['delete_id']))
+{
+ $sql_query="DELETE FROM register WHERE id=".$_GET['delete_id'];
+ $sqluq="update register set status='".$approve."' WHERE id=".$_GET['delete_id']."'";
+ mysqli_query($con,$sqluq);
+ header("Location: newusers.php");
+}
+?>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -19,6 +28,7 @@
 function closeWin() {
     this.close(); 
 }
+
 </script>
 
 
@@ -26,9 +36,6 @@ function closeWin() {
 </head>
 
 <body>
-
-
-
 <!-- load the selected submission details to textboxes-->
  <?php
 include("database_connect.php");
@@ -59,9 +66,10 @@ while($row=mysqli_fetch_array($result)){?>
 <label for="lnam">Department</label>
 <input type="text" class="form-control" name="department" value="<?php echo $row['address'] ?>">
 </div>
-<div class="row button_pad">
+<div class="form-group">
 <!--<button type="submit" class="btn btn-danger"  name="confirm">Update</button>-->
-<button type="button" class="btn btn-default" onclick="closeWin()"> Cancel</button>
+<button type="button" class="btn btn-primary" onclick="closeWin()">Cancel </button>
+<button type="button" name="button" class="btn btn-success" ><a href="javascript:delete_id(<?php echo $row['id']; ?>)">Approve</button>
 </div>
 </form>
 <?php }
@@ -70,21 +78,17 @@ while($row=mysqli_fetch_array($result)){?>
 
 
 <!--update the post(submission table)-->
-     <!-- <?php 
-                if(isset($_POST['faculty'])) {
-                    echo "hahhaa";
-                    echo $_POST['postid'];
-                    echo $_POST['faculty'];
-                    echo $_POST['post'];
-                    echo $_POST['department'];  
+   <!--  <?php 
+                    if (isset($_POST['button'])){
+                      echo "inside";
                     include('database_connect.php');
                      if(mysqli_connect_errno()){
                                echo "failed to connect to MySQL.".mysqli_connect_error();
                                }           
                     try {
                         echo "Done";
-            
-                       $sqluq="update post set content='".$_POST['post']."' ,faculty='".$_POST['faculty']."' ,department='".$_POST['department']."' WHERE postId='".$_POST['postid']."'";
+                        $approve = "active";
+                       $sqluq="update register set status='".$approve."' WHERE id='".$_POST['sendID']."'";
                       
                         echo "Updated !";
                         mysqli_query($con, $sqluq);
@@ -96,14 +100,22 @@ while($row=mysqli_fetch_array($result)){?>
                     }
                     
                     catch(Exception $e) {
+                }
                       echo 'Message: ' .$e->getMessage();
                     }
-                }
                 
                 
-            ?>-->
+            ?> -->
 
-
+<script type="text/javascript">
+function delete_id(id)
+{
+ if(confirm('Are you sure To Remove This Record ?'))
+ {
+  window.location.href='newusers.php?delete_id='+id;
+ }
+}
+</script>
 
 
 </body>

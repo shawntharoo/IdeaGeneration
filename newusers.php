@@ -20,22 +20,11 @@ if(isset($_GET['delete_id']))
 <!-- bootstrap table scripts -->
 <script>
 
-$(document).ready(function(){
-$("#mytable #checkall").click(function () {
-        if ($("#mytable #checkall").is(':checked')) {
-            $("#mytable input[type=checkbox]").each(function () {
-                $(this).prop("checked", true);
-            });
-
-        } else {
-            $("#mytable input[type=checkbox]").each(function () {
-                $(this).prop("checked", false);
-            });
-        }
-    });
-    
-    $("[data-toggle=tooltip]").tooltip();
-});
+  function exefunction(){
+                var lfckv = document.getElementById("everybox").checked;
+                alert(lfckv);
+                
+            }
 
 
 </script>
@@ -54,68 +43,20 @@ window.open(url,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=
 <title>ideapool Admin Page</title>
 <!-- body style/ table margin -->
 
-<style>
-
-.tablecontent
-{
-	margin-left:20em;
-	margin-left:20em;
-	margin-top:7em;
-	margin-bottom:10em;
-	
-}
-
-</style>
 </head>
 <body>
 <?php
-include('header.php');
+//include('header.php');
 ?>
 
-<!--start of navigation bar -->
-
-
-<!--<nav class = "navbar navbar-inverse" role = "navigation">
-<div class = "navbar-header" style="font-size:20px">
-<a class = "navbar-brand" href = "#">Admin Page</a>
-</div>
-<div style="font-size:20px">
-<div class="nav">
-<ul class = "nav navbar-nav pull-right">
- <li class = "active"><a href = "#">User Reuqests</a></li>
- <li class = "dropdown">
-<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
-Submission
-<b class = "caret"></b>
-</a>
-                                                    
-<ul class = "dropdown-menu" style="font-size:20px">
-<li id="page1"><a href = "editSubmissionEngi.php">Enginering</a></li>
-<li id="page2"><a href = "editSubmissionCompu.php">Computing</a></li>
-<li id="page3"><a href = "editSubmissionManag.php">Management</a></li>
-<li id="page4"><a href ="editSubmissionHos.php">Art</a></li>
-<li class = "divider"></li>
-<li id="page5"><a href = "editSubmissionNonAc.php">Non Academic</a></li>
-<li class = "divider"></li>
-<li id="page6"><a href = "editSubmissionOther.php">Others</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-
-</nav>-->
-
-
-<!-- load the submission to the table-->
-
-<!--<div id ="tablecontent">-->
 <div class="container">
 <div class="row">
 <div class="col-md-12">
-<h4> Submission of Faculty of Computing</h4>
+<br/>
+<h4>All New Registered Users </h4>
+<br/>
 <div class="table-responsive">
-<table id="mytable" class="table table-bordred table-striped">
+<table id="mytable" class="table table-hover">
 <thead>
 
 <th>Register ID</th>
@@ -124,6 +65,7 @@ Submission
 <th>Email</th>
 <th>UniversityID</th>
 <th>Approvement </th>
+<th>View</th>
 <th>Delete</th>
 </thead>
 <tbody>
@@ -144,17 +86,18 @@ while($row=mysqli_fetch_array($result)){?>
 <td><?php echo $row['contact']?></td>
 <td><?php echo $row['emil']; ?></td>
 <td><?php echo $row['universityID']; ?></td>
-<td><input type="checkbox" class="checkthis" /></td>
-<td><a href="approve.php?sendId=<?= $row['id'] ?>" onclick="pop_up(this);return false;"><img name="jsbutton" src="images/edit.png" width="25" height="25" border="0" alt="javascript button"></a></td>
+<td><input type="checkbox" class="checkthis" name="everybox" id="everybox"/></td>
+<td><a href="approve.php?sendId=<?= $row['id'] ?>" onclick="pop_up(this);return false;"><img name="jsbutton" src="images/view.png" width="30" height="20" border="0" alt="javascript button"></a></td>
 <td><a href="javascript:delete_id(<?php echo $row['id']; ?>)"><img name="jsbutton" src="images/delete.png" width="25" height="25" border="0" alt="javascript button"></a></td>
-
 </tr>
-                                                                            
+
 <?php
 }
 ?>
 </tbody>
 </table>
+<button type="button" class="btn btn-primary" onclick="exefunction()"><center>Submit</center></button>
+
 </div>
 </div>
 </div>

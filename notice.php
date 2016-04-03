@@ -14,7 +14,7 @@
 <div class="jumbotron">
   <h1>Hello, Welcome  
   <?php 
-session_start();
+//session_start();
 echo $_SESSION['users_fname']; 
 ?>
 </h1>
