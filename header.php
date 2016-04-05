@@ -2,7 +2,7 @@
   <div class="container-fluid header">
        <div class="row headerrow">
           <div class="col-md-4">
-            <a href="index.php"><img src="images/logo.png" class="img img-responsive"/></a>
+            <a href="index.php" data-toggle="tooltip" data-placement="bottom" title="Home"><img src="images/logo.png" class="img img-responsive"/></a>
           </div>
            <div class="col-md-4">
            

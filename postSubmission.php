@@ -30,7 +30,7 @@ $totalRows_catSet = mysqli_num_rows($catSet);
 if(isset($_POST['submitted']) == 1){
 	session_start();
 	$usrid=$_SESSION['userid'];
-	echo "<script type='text/javascript'>alert('$usrid')</script>";
+	
 $postSet = "INSERT INTO post (postId, userId, faculty, department, category, title, content) VALUES ('$postId','$usrid','$_POST[faculty]','$_POST[department]', '$_POST[category]', '$_POST[title]', '$_POST[message]')";
 $posts = mysqli_query($con, $postSet) or die(mysqli_error());	
 if ($posts) {
@@ -58,7 +58,8 @@ else
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<!-- Custom styles for this template -->
 		<link href="css/diluni.css" rel="stylesheet">
-		
+		<link rel="stylesheet" href="css/ideacss.css" />
+
 		<!-- color schema -->
 		<link href="css/color-4.css" rel="stylesheet" id="layoutstyle">	
 					
@@ -85,7 +86,7 @@ else
  <div class="container-fluid" style="background-image:url(images/banner2.jpg)">
     <div class="container">
      <?php
-    include('header.php');
+    include("header.php");
      ?>
     </div> 
  </div> 

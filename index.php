@@ -64,7 +64,7 @@
          <h1 class="text1">SHARE YOUR IDEA WITH US</h1>
        </div>
         <div class="row textrow">
-         <h3 class="text2">You Will See What Others Say</h3>
+         <h3 class="text2">WHAT YOU SAY WILL MAKE A DIFFERENCE</h3>
        </div>
         <div class="row textrow">
                     <?php 
@@ -94,7 +94,7 @@
             <div class="col-md-6">
               <div class="row">
               <h1>THE EASIEST WAY </h1>
-             <h1> TO LEARN NEW THINGS</h1>
+             <h1> TO SHARE YOUR IDEAS</h1>
                 <hr/>
               </div>
               <div class="row">

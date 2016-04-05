@@ -25,7 +25,9 @@
   
     include('header.php');
   ?>
-  
+<div class="container" style="margin-left:40px;">
+  <a href="view4.php" class="btn btn-success">Back</a>
+</div>  
   
   <script type="text/javascript"> 
                          window.onload = function() {$('.stylealert').fadeIn().delay(3000).fadeOut();
@@ -156,7 +158,7 @@
                          <form name="commentform" action="comment_collect.php" method="post" onsubmit ="return validateform();">
                          
                          	<div class="row adjusttop" > <!--comment description box-->
-                	     	 <textarea cols="100" rows="4" name="description"> Add a comment </textarea>
+                	     	 <textarea cols="100" rows="4" name="description" placeholder="Add a comment">  </textarea>
                              
                              
                              <select name="commentType">

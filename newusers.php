@@ -2,9 +2,9 @@
 include('database_connect.php');
 $sql_query="SELECT * FROM register";
 $result_set=mysqli_query($con,$sql_query);
-if(isset($_GET['delete_id']))
+if(isset($_GET['deleted']))
 {
- $sql_query="DELETE FROM register WHERE id=".$_GET['delete_id'];
+ $sql_query="DELETE FROM register WHERE id=".$_GET['deleted'];
  mysqli_query($con,$sql_query);
  header("Location: newusers.php");
 }
@@ -22,7 +22,6 @@ if(isset($_GET['delete_id']))
 
   function exefunction(){
                 var lfckv = document.getElementById("everybox").checked;
-                alert(lfckv);
                 
             }
 
@@ -40,7 +39,7 @@ window.open(url,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=
 }
 </script>
 <!-- end of the popup window -->
-<title>ideapool Admin Page</title>
+<title>IDEAPOOL Admin Page</title>
 <!-- body style/ table margin -->
 
 </head>
@@ -88,15 +87,14 @@ while($row=mysqli_fetch_array($result)){?>
 <td><?php echo $row['universityID']; ?></td>
 <td><input type="checkbox" class="checkthis" name="everybox" id="everybox"/></td>
 <td><a href="approve.php?sendId=<?= $row['id'] ?>" onclick="pop_up(this);return false;"><img name="jsbutton" src="images/view.png" width="30" height="20" border="0" alt="javascript button"></a></td>
-<td><a href="javascript:delete_id(<?php echo $row['id']; ?>)"><img name="jsbutton" src="images/delete.png" width="25" height="25" border="0" alt="javascript button"></a></td>
-</tr>
+<td><a href="newuser_delete.php?variable=<?= $row['id'] ?>"><img name="jsbutton" src="images/delete.png" width="25" height="25" border="0" alt="javascript button"></a></td>
 
 <?php
 }
 ?>
 </tbody>
 </table>
-<button type="button" class="btn btn-primary" onclick="exefunction()"><center>Submit</center></button>
+<!--<button type="button" class="btn btn-primary" onclick="exefunction()"><center>Submit</center></button>-->
 
 </div>
 </div>
@@ -105,11 +103,11 @@ while($row=mysqli_fetch_array($result)){?>
 </div>
 <!-- popup box of delete-->
 <script type="text/javascript">
-function delete_id(id)
+function DeleteUser(delete)
 {
- if(confirm('Are you sure To Remove This Record ?'))
+ if(confirm('Are you sure you want to Remove This user ?'))
  {
-  window.location.href='newusers.php?delete_id='+id;
+  window.location.href='newusers.php?deleted='+delete;
  }
 }
 </script>

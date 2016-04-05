@@ -14,7 +14,9 @@
  <?php
     include('header.php');
  ?>
-
+ <div class="container" style="margin-left:80px;">
+  <a href="postSubmission.php" class="btn btn-success">Submit Idea</a>
+</div>
  <div class="container">
           <nav class="navbar navbar">
              <div class="container-fluid">
