@@ -1,10 +1,10 @@
 <?php
 include('database_connect.php');
-if(isset($_GET['approveid']))
+if(isset($_GET['blockid']))
 {
-  $approve="active";
+  $block="blocked";
   echo "string";
- $sqluq="update register set status='".$approve."' WHERE id='".$_GET['approveid']."'";
+ $sqluq="update register set status='".$block."' WHERE id='".$_GET['blockid']."'";
  mysqli_query($con,$sqluq);
 echo "<script>window.close();</script>";
 }
@@ -87,7 +87,7 @@ while($row=mysqli_fetch_array($result)){?>
 <div class="form-group">
 <!--<button type="submit" class="btn btn-danger"  name="confirm">Update</button>-->
 <button type="button" class="btn btn-primary" onclick="closeWin()">Cancel </button>
-<button type="button" name="button" class="btn btn-success" onclick="javascript:ApproveUser(<?php echo $row['id']; ?>)">Approve</button>
+<button type="button" name="button" class="btn btn-success" onclick="javascript:BlockUser(<?php echo $row['id']; ?>)">Block</button>
 </div>
 <input type="hidden" name="postid" value="<?php echo $row['id']; ?>">
 </form>
@@ -96,11 +96,11 @@ while($row=mysqli_fetch_array($result)){?>
 </div>
 
 <script type="text/javascript">
-function ApproveUser(id)
+function BlockUser(id)
 {
- if(confirm('Are you sure you want to send credentials to this user?'))
+ if(confirm('Are you sure you want to BLOCK this user?'))
  {
-  window.location.href='approve.php?approveid='+id;
+  window.location.href='block.php?blockid='+id;
  }
 }
 </script>

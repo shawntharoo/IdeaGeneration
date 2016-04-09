@@ -49,12 +49,14 @@ window.open(url,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=
 
 <th>Register ID</th>
 <th>Name</th>
+<th>Address</th>
 <th>ContactNo</th>
+<th>Gender</th>
 <th>Email</th>
+<th>Category</th>
 <th>UniversityID</th>
-<th>Approvement </th>
+<th>Status </th>
 <th>View</th>
-<th>Delete</th>
 </thead>
 <tbody>
 <tr>
@@ -64,19 +66,21 @@ include("database_connect.php");
 if(mysqli_connect_errno()){
 echo "failed to connect to MySQL.".mysqli_connect_error();
 }
-$query = "select * from register where status='pending' ";
+$query = "select * from register";
 $result=mysqli_query($con,$query);
 
 while($row=mysqli_fetch_array($result)){?>
 <tr>
 <td><?php echo $row['id'] ?></td>
 <td><?php echo $row['fname']." ".$row['lname'] ?></td>
+<td><?php echo $row['address']?></td>
 <td><?php echo $row['contact']?></td>
+<td><?php echo $row['gender']?></td>
 <td><?php echo $row['emil']; ?></td>
+<td><?php echo $row['category']?></td>
 <td><?php echo $row['universityID']; ?></td>
-<td><input type="checkbox" class="checkthis" name="everybox" id="everybox"/></td>
-<td><a href="approve.php?sendId=<?= $row['id'] ?>" onclick="pop_up(this);return false;"><img name="jsbutton" src="images/view.png" width="30" height="20" border="0" alt="javascript button"></a></td>
-<td><a href="newuser_delete.php?variable=<?= $row['id'] ?>"><img name="jsbutton" src="images/delete.png" width="25" height="25" border="0" alt="javascript button"></a></td>
+<td><?php echo $row['status']?></td>
+<td><a href="block.php?sendId=<?= $row['id'] ?>" onclick="pop_up(this);return false;"><img name="jsbutton" src="images/view.png" width="30" height="20" border="0" alt="javascript button"></a></td>
 
 <?php
 }
