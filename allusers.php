@@ -66,11 +66,11 @@ include("database_connect.php");
 if(mysqli_connect_errno()){
 echo "failed to connect to MySQL.".mysqli_connect_error();
 }
-$query = "select * from register";
+$query = "select * from register where status != 'pending'";
 $result=mysqli_query($con,$query);
 
 while($row=mysqli_fetch_array($result)){?>
-<tr>
+<tr class="danger">
 <td><?php echo $row['id'] ?></td>
 <td><?php echo $row['fname']." ".$row['lname'] ?></td>
 <td><?php echo $row['address']?></td>

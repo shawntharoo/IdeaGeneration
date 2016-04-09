@@ -68,7 +68,7 @@ $query = "select * from register where status='pending' ";
 $result=mysqli_query($con,$query);
 
 while($row=mysqli_fetch_array($result)){?>
-<tr>
+<tr class="info">
 <td><?php echo $row['id'] ?></td>
 <td><?php echo $row['fname']." ".$row['lname'] ?></td>
 <td><?php echo $row['contact']?></td>
