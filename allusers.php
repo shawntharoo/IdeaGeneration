@@ -69,7 +69,8 @@ echo "failed to connect to MySQL.".mysqli_connect_error();
 $query = "select * from register where status != 'pending'";
 $result=mysqli_query($con,$query);
 
-while($row=mysqli_fetch_array($result)){?>
+while($row=mysqli_fetch_array($result)){
+if(........){?>
 <tr class="danger">
 <td><?php echo $row['id'] ?></td>
 <td><?php echo $row['fname']." ".$row['lname'] ?></td>
@@ -81,7 +82,19 @@ while($row=mysqli_fetch_array($result)){?>
 <td><?php echo $row['universityID']; ?></td>
 <td><?php echo $row['status']?></td>
 <td><a href="block.php?sendId=<?= $row['id'] ?>" onclick="pop_up(this);return false;"><img name="jsbutton" src="images/view.png" width="30" height="20" border="0" alt="javascript button"></a></td>
-
+}else{
+	<tr class="info">
+<td><?php echo $row['id'] ?></td>
+<td><?php echo $row['fname']." ".$row['lname'] ?></td>
+<td><?php echo $row['address']?></td>
+<td><?php echo $row['contact']?></td>
+<td><?php echo $row['gender']?></td>
+<td><?php echo $row['emil']; ?></td>
+<td><?php echo $row['category']?></td>
+<td><?php echo $row['universityID']; ?></td>
+<td><?php echo $row['status']?></td>
+<td><a href="block.php?sendId=<?= $row['id'] ?>" onclick="pop_up(this);return false;"><img name="jsbutton" src="images/view.png" width="30" height="20" border="0" alt="javascript button"></a></td>
+}
 <?php
 }
 ?>
