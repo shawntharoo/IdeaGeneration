@@ -91,7 +91,15 @@ while($row=mysqli_fetch_array($result)){?>
 </div>      
 </div>
 <!-- popup box of delete-->
-
+<script type="text/javascript">
+function delete_id(id)
+{
+ if(confirm('Are you sure To Remove This Record ?'))
+ {
+  window.location.href='editSubmissionCompu.php?delete_id='+id;
+ }
+}
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </body>

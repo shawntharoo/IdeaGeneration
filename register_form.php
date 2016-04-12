@@ -38,6 +38,6 @@ echo '<script language="javascript">';
 echo 'alert("Username or Password is invalid")';
 echo '</script>';
 
-header('Location: login.php');
+header('Location: firstLogin.php');
 mysqli_close($con);
 ?>
