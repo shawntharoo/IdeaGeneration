@@ -25,18 +25,19 @@ $done = move_uploaded_file($source,$destination);
      	echo "Error in Uploading Image";
    }
 $_SESSION['users_fname']=$fname; 
+$username = $_POST['email'];
 
 //echo $fname ."<br/>";
 
 $sql="INSERT INTO 
-register (fname,lname,address,contact,gender,emil,category,universityID,image)
-VALUES ('$fname','$lname','$address','$tel','$gend','$email','$list','$uid','$input')";
+register (fname,lname,address,contact,gender,emil,category,universityID,image,username)
+VALUES ('$fname','$lname','$address','$tel','$gend','$email','$list','$uid','$input','$username')";
 mysqli_query($con,$sql);
 
 echo '<script language="javascript">';
 echo 'alert("Username or Password is invalid")';
 echo '</script>';
 
-header('Location: notice.php');
+header('Location: login.php');
 mysqli_close($con);
 ?>

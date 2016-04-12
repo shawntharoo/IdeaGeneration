@@ -32,9 +32,25 @@ function validateform(){
    
   include('header.php');
  ?>
-
-<div class="alert alert-info" role="alert" align="center"><span><h2>Heads Up!</h2></span><h4>If you are a new user please check your Email for the credentials..</h4></div>
-  <br/><br/>
+<div class="jumbotron">
+  <h1>Hello, Welcome  
+  <?php 
+//session_start();
+echo $_SESSION['users_fname']; 
+?>
+</h1>
+  <div class="alert alert-info" role="alert">
+  <span><h2 align="center">Heads Up!</h2></span>
+  <h3 align="center">Please Read the Notice before you proceed to Login</h3>
+</div>
+  <p align="center">Whenever you register the Administrator wants to accept you as a IDEAPool User.</p>
+  <p align="center">Within 24 hours you will be able to login with your credentials.</p>
+  <div class="alert alert-warning" role="alert">
+  <p align="center">username - your email address</p>
+  <p align="center">password - your curtine university id</p>
+  </div>
+ 
+</div> 
 <div class="container">
 <div class="row">
 <div class="col-md-3">
