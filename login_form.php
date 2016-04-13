@@ -24,9 +24,6 @@ header("location: view4.php");
 } else {
 	$error=1;
 header("location: login.php?var=$error");
-/*echo '<script language="javascript">';
-echo 'alert("Username or Password is invalid")';
-echo '</script>';*/
 }
 
 mysqli_close($con); 

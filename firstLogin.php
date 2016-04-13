@@ -62,7 +62,7 @@ echo $_SESSION['users_fname'];
 <h4 class="panel-title" align="center">Login Form</h4>
 </div>
 <div class="panel-body">
-<form name="form2" method="POST" action="login_form.php" onSubmit="return validateform();">
+<form name="form2" method="POST" action="loginform1.php" onSubmit="return validateform();">
   <div class="form-group">
     <label for="ema">Email Address</label>
     <input type="text" class="form-control" name="username" placeholder="Email">
