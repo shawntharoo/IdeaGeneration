@@ -41,7 +41,7 @@ window.open(url,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=
 <div class="row">
 <div class="col-md-12">
 <br/>
-<h4>All New Registered Users </h4>
+<h4>All Active Users </h4>
 <br/>
 <div class="table-responsive">
 <table id="mytable" class="table table-hover">

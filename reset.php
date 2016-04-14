@@ -54,7 +54,7 @@ if(isset($_GET['pass_id'])) {
 <form name="form2" method="POST" action="resetpass.php" onSubmit="return validateform();">
   <div class="form-group">
     <label for="ema">New Password</label>
-    <input type="text" class="form-control" name="password" placeholder="New Password">
+    <input type="password" class="form-control" name="password" placeholder="New Password">
   </div>
   <div class="form-group">
     <label for="cn">Confrim Password</label>
