@@ -24,7 +24,7 @@
 <!-- popup the edit window -->
 <script>
 function pop_up(url){
-window.open(url,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=1000,height=400,directories=no,location=no') 
+window.open(url,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=400,height=450,directories=no,location=no') 
 }
 </script>
 <!-- end of the popup window -->
@@ -43,23 +43,6 @@ window.open(url,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=
 <br/>
 <h4>All Active Users </h4>
 <br/>
-<div class="table-responsive">
-<table id="mytable" class="table table-hover">
-<thead>
-
-<th>Register ID</th>
-<th>Name</th>
-<th>Address</th>
-<th>ContactNo</th>
-<th>Gender</th>
-<th>Email</th>
-<th>Category</th>
-<th>UniversityID</th>
-<th>Status </th>
-<th>View</th>
-</thead>
-<tbody>
-<tr>
 <?php
 include("database_connect.php");
 
@@ -69,23 +52,41 @@ echo "failed to connect to MySQL.".mysqli_connect_error();
 $query = "select * from register where status != 'pending'";
 $result=mysqli_query($con,$query);
 
-while($row=mysqli_fetch_array($result)){?>
-	<tr class="info">
-<td><?php echo $row['id'] ?></td>
-<td><?php echo $row['fname']." ".$row['lname'] ?></td>
-<td><?php echo $row['address']?></td>
-<td><?php echo $row['contact']?></td>
-<td><?php echo $row['gender']?></td>
-<td><?php echo $row['emil']; ?></td>
-<td><?php echo $row['category']?></td>
-<td><?php echo $row['universityID']; ?></td>
-<td><?php echo $row['status']?></td>
-<td><a href="block.php?sendId=<?= $row['id'] ?>" onclick="pop_up(this);return false;"><img name="jsbutton" src="images/view.png" width="30" height="20" border="0" alt="javascript button"></a></td>
-<?php
+
+?>
+<tr class="info">
+<div class="row">
+<?php while($row=mysqli_fetch_array($result)){ 
+	$state = $row['status']?>
+  <div class="col-xs-6 col-md-3">
+    <div class="thumbnail">
+      <div class="caption">
+      <img src="<?php echo $row['Image']?>" height="120px" width="180px" align="middle">
+        <h3><?php echo $row['fname']." ".$row['lname'] ?></h3>
+        <p>Registered ID : <?php echo $row['id'] ?></p>
+        <p>University ID : <?php echo $row['universityID']; ?></p>
+        <p>Gender        : <?php echo $row['gender'] ?></p>
+        <p>Address       : <?php echo $row['address'] ?></p>
+		<p>Category      : <?php echo $row['category'] ?></p>
+		<p>Email         : <?php echo $row['emil']; ?></p>
+		<p>Contact No    : <?php echo $row['contact']?></p>
+		<p>Status        : <?php echo $state ?></p>
+        <p><a href="block.php?sendId=<?= $row['id'] ?>" onclick="pop_up(this);return false;" class="btn btn-primary" role="button">View</a>
+        <?php
+        if($state == "blocked"){ ?>
+         <button type="button" name="button" class="btn btn-danger" onclick="javascript:UnblockUser(<?php echo $row['id']; ?>)">Unblock</button>
+       <?php
+        }else{ ?>
+        	<button type="button" name="button" class="btn btn-danger" onclick="javascript:BlockUser(<?php echo $row['id']; ?>)">Block</button>
+        <?php } ?>
+      </div>
+    </div>
+  </div>
+  <?php
 }
 ?>
-</tbody>
-</table>
+</div>
+
 <!--<button type="button" class="btn btn-primary" onclick="exefunction()"><center>Submit</center></button>-->
 
 </div>
@@ -94,6 +95,24 @@ while($row=mysqli_fetch_array($result)){?>
 </div>      
 </div>
 <!-- popup box of delete-->
+<script type="text/javascript">
+function BlockUser(id)
+{
+ if(confirm('Are you sure you want to Block this user?'))
+ {
+  window.location.href='block_user.php?blockid='+id;
+ }
+}
+
+function UnblockUser(id)
+{
+ if(confirm('Are you sure you want to Unblock this user?'))
+ {
+  window.location.href='unblock_user.php?blockid='+id;
+ }
+}
+</script>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>

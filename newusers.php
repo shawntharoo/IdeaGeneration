@@ -18,13 +18,10 @@
 </script>
 <!-- end of the boostrap table script -->
 
-
-
-
 <!-- popup the edit window -->
 <script>
 function pop_up(url){
-window.open(url,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=1000,height=400,directories=no,location=no') 
+window.open(url,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=400,height=500,directories=no,location=no') 
 }
 </script>
 <!-- end of the popup window -->
@@ -41,23 +38,8 @@ window.open(url,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=
 <div class="row">
 <div class="col-md-12">
 <br/>
-<h4>All New Registered Users </h4>
+<h3>All New Registered Users </h3>
 <br/>
-<div class="table-responsive">
-<table id="mytable" class="table table-hover">
-<thead>
-
-<th>Register ID</th>
-<th>Name</th>
-<th>ContactNo</th>
-<th>Email</th>
-<th>UniversityID</th>
-<th>Approvement </th>
-<th>View</th>
-<th>Delete</th>
-</thead>
-<tbody>
-<tr>
 <?php
 include("database_connect.php");
 
@@ -67,22 +49,39 @@ echo "failed to connect to MySQL.".mysqli_connect_error();
 $query = "select * from register where status='pending' ";
 $result=mysqli_query($con,$query);
 
-while($row=mysqli_fetch_array($result)){?>
+?>
 <tr class="info">
-<td><?php echo $row['id'] ?></td>
-<td><?php echo $row['fname']." ".$row['lname'] ?></td>
-<td><?php echo $row['contact']?></td>
-<td><?php echo $row['emil']; ?></td>
-<td><?php echo $row['universityID']; ?></td>
-<td><input type="checkbox" class="checkthis" name="everybox" id="everybox"/></td>
-<td><a href="approve.php?sendId=<?= $row['id'] ?>" onclick="pop_up(this);return false;"><img name="jsbutton" src="images/view.png" width="30" height="20" border="0" alt="javascript button"></a></td>
-<td><a href="newuser_delete.php?variable=<?= $row['id'] ?>"><img name="jsbutton" src="images/delete.png" width="25" height="25" border="0" alt="javascript button"></a></td>
-
-<?php
+<div class="row">
+<?php while($row=mysqli_fetch_array($result)){ ?>
+  <div class="col-xs-6 col-md-3">
+    <div class="thumbnail">
+      <div class="caption">
+      <img src="<?php echo $row['Image']?>" height="120px" width="180px" align="middle">
+        <h3><?php echo $row['fname']." ".$row['lname'] ?></h3>
+        <p>University ID : <?php echo $row['universityID']; ?></p>
+		<p>Category      : <?php echo $row['category'] ?></p>
+		<p>Email         : <?php echo $row['emil']; ?></p>
+		<p>Contact No    : <?php echo $row['contact']?></p>
+        <p><a href="approve.php?sendId=<?= $row['id'] ?>" onclick="pop_up(this);return false;" class="btn btn-info" role="button">View</a>
+        <button type="button" name="button" class="btn btn-success" onclick="javascript:ApproveUser(<?php echo $row['id']; ?>)">Approve</button>
+<button type="button" name="button" class="btn btn-danger" onclick="javascript:delete_id(<?php echo $row['id']; ?>)">Delete</button></p>
+      </div>
+    </div>
+  </div>
+  <?php
 }
 ?>
-</tbody>
-</table>
+</div>
+
+<script type="text/javascript">
+function ApproveUser(id)
+{
+ if(confirm('Are you sure you want to send credentials to this user?'))
+ {
+  window.location.href='newuser_approve.php?approveid='+id;
+ }
+}
+</script>
 <!--<button type="button" class="btn btn-primary" onclick="exefunction()"><center>Submit</center></button>-->
 
 </div>
@@ -96,7 +95,7 @@ function delete_id(id)
 {
  if(confirm('Are you sure To Remove This Record ?'))
  {
-  window.location.href='editSubmissionCompu.php?delete_id='+id;
+  window.location.href='newuser_delete.php?delete_id='+id;
  }
 }
 </script>

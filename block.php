@@ -87,7 +87,7 @@ while($row=mysqli_fetch_array($result)){?>
 <div class="form-group">
 <!--<button type="submit" class="btn btn-danger"  name="confirm">Update</button>-->
 <button type="button" class="btn btn-primary" onclick="closeWin()">Cancel </button>
-<button type="button" name="button" class="btn btn-success" onclick="javascript:BlockUser(<?php echo $row['id']; ?>)">Block</button>
+<!--<button type="button" name="button" class="btn btn-success" onclick="javascript:BlockUser(<?php echo $row['id']; ?>)">Block</button>-->
 </div>
 <input type="hidden" name="postid" value="<?php echo $row['id']; ?>">
 </form>
