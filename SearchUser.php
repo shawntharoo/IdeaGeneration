@@ -51,7 +51,7 @@
     border : 3px solid rgb(229, 255, 255);
 }
 
-.snip1336 {
+.userprf {
   font-family: 'Roboto', Arial, sans-serif;
   
   float: left;
@@ -66,24 +66,24 @@
   line-height: 1.4em;
   background-color: #141414;
 }
-.snip1336 * {
+.userprf * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-transition: all 0.20s ease;
   transition: all 0.25s ease;
 }
-.snip1336 img {
+.userprf img {
   max-width: 100%;
   vertical-align: top;
   opacity: 0.85;
 }
-.snip1336 figcaption {
+.userprf figcaption {
   width: 100%;
   background-color: #141414;
   padding: 20px;
 
 }
-.snip1336 figcaption:before {
+.userprf figcaption:before {
 
   content: '';
   bottom: 100%;
@@ -94,7 +94,7 @@
   border-width: 50px 0 0 390px;
   border-color: transparent transparent transparent #141414;
 }
-.snip1336 figcaption a {
+.userprf figcaption a {
   padding: 5px;
   border: 1px solid #ffffff;
   color: #ffffff;
@@ -109,10 +109,10 @@
   font-weight: 600;
   letter-spacing: 1px;
 }
-.snip1336 figcaption a:hover {
+.userprf figcaption a:hover {
   opacity: 1;
 }
-.snip1336 .profile {
+.userprf .profile {
   border-radius: 50%;
   
   bottom: 100%;
@@ -122,27 +122,26 @@
   opacity: 1;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
-.snip1336 .follow {
+.userprf .follow {
   margin-right: 4%;
   border-color: #66CC00;
   color: #66CC00;
 }
-.snip1336 h2 {
+.userprf h2 {
   margin: 0 0 5px;
   font-weight: 300;
 }
-.snip1336 h2 span {
+.userprf h2 span {
   display: block;
   font-size: 0.5em;
   color: #66CC00;
 }
-.snip1336 p {
+.userprf p {
   margin: 0 0 10px;
   font-size: 0.8em;
   letter-spacing: 1px;
   opacity: 0.8;
 }
-
 
 
 
@@ -202,15 +201,12 @@ input[type=text]:focus {
                                           <ul class = "nav navbar-nav pull-right">
                                                 <li class = "active"><a href = "SearchUser.php">Users</a></li>
                                                 <li class = "active"><a href = "editSubmissionCompu.php">Submission</a></li>
-                                                 <li class = "active"><a href = "newusers.php">New Users</a></li>
-                                                <li class = "active"><a href = "allusers.php">Current User</a></li>
                                                  
                                           </ul>
                              </div>
               </div>
 
 </nav>
-
 
 
  
@@ -222,9 +218,9 @@ input[type=text]:focus {
 
            <div class="container">
            
-	                <div class="row">
+	            <div class="row">
                     
-                    <div class="row searchgroup" style="padding-left:680px">
+                  <div class="row searchgroup" style="padding-left:680px">
                     <form method="post">
                     <div class="row search_col">
                     
@@ -232,19 +228,18 @@ input[type=text]:focus {
                                     
                               
                                      <input type="text" class="search_text" placeholder="Search" name="searchkey3"/>
-                           <select name="category" style="height:43px;border: 2px solid #ccc" >
-                    	<option value="searchval">Select the search category</option>
-  						<option value="fname">Name</option>
-                    	<option value="universityID">University ID</option>
-                        <option value="emil">Email</option>
-                        <option value="category">Category</option>
-                        </select>
+                           			<select name="category" style="height:40px;border: 2px solid #ccc" >
+                    				<option value="searchval">Select the search category</option>
+  									<option value="fname">Name</option>
+                    				<option value="universityID">University ID</option>
+                        			<option value="emil">Email</option>
+                        			<option value="category">Category</option>
+                        			</select>
                     
-                                     <button class="search_btn" name="searchkey4" style="height:40px;width:40px" src="images/delete.png">>
-                                </button>
-                            </div>
-                                  </form>
-                          </div>
+                                     <button class="search_btn" name="searchkey4" style="height:39px;width:45px"><img name="edit" src="images/srch.png" width="25" height="25"/></button>
+                     </div>
+                     </form>
+                   </div>
 
  
  </div>
@@ -289,7 +284,7 @@ input[type=text]:focus {
  
 
  
- <figure class="snip1336">
+ <figure class="userprf">
   <figcaption>
   <img src="<?php echo $row['Image']; ?>" alt="profile-sample5" class="profile" />
     <h2><?php echo $row['fname']; ?><span><?php echo $row['lname']; ?></span></h2>
@@ -297,7 +292,7 @@ input[type=text]:focus {
     <h5><?php echo $row['category']; ?> </h5>
     <h5><?php echo $row['emil']; ?> </h5>
     <a href="#" class="follow">Edit</a>
-    <a href="#" class="info">More Info</a>
+   <a href="userProfile.php?id=<?=$row["id"]?>" class="info">More Info</a>
   </figcaption>
 </figure>
 
@@ -310,9 +305,36 @@ input[type=text]:focus {
  
  <footer>
  
-<?php
- include('footer.php');
-?>
+<div class="container-fluid footer">
+     <div class="container">
+          <div class="col-md-4" align="center">
+            <img src="images/logo.png" class="img img-responsive footerimg"  />
+          </div>
+           <div class="col-md-4" align="center">
+           <h6> CONTACT CURTIN </h6>
+           <br />
+           <p>
+           <b>General enquiries</b>	 <br />
+		   Telephone: +61 8 9266 9266	 <br />
+		   Fax: +61 8 9266 3131	 <br />
+           <br /><br/>
+            <b>Address</b>	 <br />
+			Kent Street, <br /> Bentley, <br /> Perth <br />
+			Western Australia 6102
+            </p>
+          </div>
+           <div class="col-md-4" align="center">
+           <p><b>LOCATIONS</b>	<br /> <br />
+			Bentley (main campus)	 <br />
+			Other WA campuses	 <br />
+			Curtin University Sydney	 <br />
+			Curtin Sarawak	 <br />
+			Curtin Singapore	 <br />
+			</p>
+          </div>
+        
+     </div>
+ </div>
  </footer>
 
 </body>
