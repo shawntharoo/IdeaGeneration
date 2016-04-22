@@ -13,7 +13,9 @@ $sqluq="update register set status='".$approve."', password='".$pass."' WHERE id
 mysqli_query($con,$sqluq);
 
 echo "<script>window.close();</script>";
+
 }
+
 ?>
 
 
@@ -31,6 +33,7 @@ echo "<script>window.close();</script>";
  window.opener.location.href = window.opener.location.href;
  if (window.opener.progressWindow) {
     window.opener.progressWindow.close()
+	
   }
 window.close();
 } 

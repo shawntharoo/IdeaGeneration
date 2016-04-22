@@ -254,7 +254,7 @@ color:#666;
 
 .photosize{
 	height: 200px;
-	width: 130px;
+	width: 170px;
 	color: #FF9;
 }
 	
@@ -351,3 +351,91 @@ padding-top:40px;
 width:110px;
 height:36px;
 font-weight:bold;}
+.fgroup
+{
+	padding-top:10px;
+	padding-bottom:10px;
+	
+}
+.advsearch
+{ 
+background-color:#000;
+margin-bottom:3px;
+	}
+.response_div
+{
+	background-color:#FFF;
+	padding:12px;
+	padding-top:10px;
+	border:#CCC 1px solid;
+	margin-bottom:6px;
+	overflow:hidden;
+}
+
+.imp_response_div
+{
+	background-color:#CCF;
+	padding:12px;
+	padding-top:10px;
+	border:#CCC 1px solid;
+	margin-bottom:6px;
+	overflow:hidden;
+}
+
+.response_top_div
+{
+	background-color:#E4E4E4;
+	color:#666;
+	padding:12px;
+	padding-bottom:0px;
+	border:#CCC 1px solid;
+	margin-top:6px;
+	overflow:hidden;
+	
+}
+
+.imp_response_top_div
+{
+	background-color:#9CC;
+	color:#666;
+	padding:12px;
+	padding-bottom:0px;
+	border:#CCC 1px solid;
+	margin-top:6px;
+	overflow:hidden;
+	
+}
+
+.none_yet_div
+{
+	background-color:#E4E4E4;
+	color:#999;
+	padding:16px;
+	border:#CCC 1px solid;
+	margin-top:6px;
+}
+
+.button_design
+{
+	margin:10px;
+	margin-left:20px;
+	padding-left:30px;
+	padding-right:30px;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.vote_design
+{
+	margin:3px;
+	position:relative;
+	padding:5px;
+}
+
+
+
+.adjust_div
+{
+	overflow:hidden;
+	max-width:1000px;
+}

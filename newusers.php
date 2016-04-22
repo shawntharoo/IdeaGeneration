@@ -31,8 +31,34 @@ window.open(url,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=
 </head>
 <body>
 <?php
-//include('header.php');
+include('header.php');
 ?>
+
+<nav class = "navbar navbar-inverse" role = "navigation">
+   
+           <div class = "navbar-header" style="font-size:20px">
+              <a class = "navbar-brand" href = "#">Admin Page</a>
+           </div>
+           
+           <div style="font-size:20px">
+          
+                            <div class="nav">
+                                          <ul class = "nav navbar-nav pull-right">
+                                                <li class = "active"><a href = "SearchUser.php">Users</a></li>
+                                                <li class = "active"><a href = "editSubmissionCompu.php">Submission</a></li>
+                                                 <li class = "active"><a href = "newusers.php">New Users</a></li>
+                                                <li class = "active"><a href = "allusers.php">Current User</a></li>
+                                                 
+                                          </ul>
+                             </div>
+              </div>
+
+</nav>
+
+
+
+
+
 
 <div class="container">
 <div class="row">
@@ -101,5 +127,8 @@ function delete_id(id)
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<?php
+ include('footer.php');
+?> 
 </body>
 </html>

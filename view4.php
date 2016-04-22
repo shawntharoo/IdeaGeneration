@@ -73,9 +73,11 @@
                     <div class="col-md-3">
                     </div>
                     <div class="col-md-2">
+                     
                     </div>
                     <div class="col-md-3">
                            <div class="row searchgroup">
+                            
                                     <form method="post">
                               <div class="col-md-8 search_col">
                                      <input type="text" class="search_text" placeholder="Search" name="searchkey3"/>
@@ -84,8 +86,11 @@
                                      <button class="search_btn" >
                                              <i class="fa fa-search"></i>
                                      </button>
+                                    <a href="advanced.php"> <img src="images/advsearch.png" class="advsearch" height="24px" width="26px"
+                                     /></a>
                             </div>
                                   </form>
+                                 
                           </div>
        </div>
       </div>

@@ -84,6 +84,8 @@
                                      <button class="search_btn" >
                                              <i class="fa fa-search"></i>
                                      </button>
+                                       <a href="advanced.php"> <img src="images/advsearch.png" class="advsearch" height="24px" width="26px"
+                                     /></a>
                             </div>
                                   </form>
                           </div>

@@ -97,19 +97,19 @@ return true;
 <form name="form1"  method="POST" action="register_form.php" onSubmit="return validateform();" enctype="multipart/form-data">
    <div class="form-group">
     <label for="fnam">First Name</label>
-    <input type="text" class="form-control" name="fname" placeholder="First Name">
+    <input type="text" class="form-control" id="f" name="fname" placeholder="First Name">
   </div>
   <div class="form-group">
     <label for="lnam">Last Name</label>
-    <input type="text" class="form-control" name="lname" placeholder="Last Name">
+    <input type="text" class="form-control" id="l" name="lname" placeholder="Last Name">
   </div>
   <div class="form-group">
     <label for="addr">Address</label>
-    <textarea class="form-control" name="add" placeholder="Address" rows="6"></textarea>
+    <textarea class="form-control" name="add" id="a" placeholder="Address" rows="6"></textarea>
   </div>
   <div class="form-group">
     <label for="cn">Contact Number</label>
-    <input type="text" class="form-control" name="contact" placeholder="Contact Number">
+    <input type="text" class="form-control" name="contact" id="c" placeholder="Contact Number">
   </div>
   <div class="form-group">
     <label for="gender">Gender</label>
@@ -120,7 +120,7 @@ return true;
   </div>
   <div class="form-group">
     <label for="ema">Email Address</label>
-    <input type="email" class="form-control" name="email" placeholder="Email">
+    <input type="email" class="form-control" name="email" id="e" placeholder="Email">
   </div>
 <div class = "form-group">
  <label for="list">Select the Catagory</label>
@@ -134,20 +134,36 @@ return true;
 </div>
   <div class="form-group">
     <label for="cn">University ID</label>
-    <input type="text" class="form-control" name="uid" placeholder="University ID">
+    <input type="text" class="form-control" name="uid" id="u" placeholder="University ID">
   </div>
   <div class="form-group">
     <label for="ima">Upload User Image</label>
-    <input type="file" name="input"/>
+    <input type="file" name="input" id="i"/>
     <p class="help-block">Make Sure you look best in your Image</p>
   </div>
   <button type="submit" class="btn btn-primary" name="btn-signup" value="submit">Sign-Up</button>
+  <button type="button" class="btn btn-warning" onclick="myFunction()">Demo</button>
 </form>
 </div>
 </div>
 </div>
 </div>
 </div>
+
+
+
+<script>
+function myFunction() {
+    document.getElementById("f").defaultValue = "Diluni";
+    document.getElementById("l").defaultValue = "Abewardhana";
+    document.getElementById("a").defaultValue = "Colombo 7, weatern province";
+    document.getElementById("c").defaultValue = "0768965432";
+    document.getElementById("e").defaultValue = "diluni@g";
+    document.getElementById("u").defaultValue = "diluni";
+    document.getElementById("i").defaultValue = "images.jpg";
+}
+</script>
+
 <?php
  include('footer.php');
 ?> 

@@ -65,13 +65,14 @@ echo $_SESSION['users_fname'];
 <form name="form2" method="POST" action="loginform1.php" onSubmit="return validateform();">
   <div class="form-group">
     <label for="ema">Email Address</label>
-    <input type="text" class="form-control" name="username" placeholder="Email">
+    <input type="text" class="form-control" id="u" name="username" placeholder="Email">
   </div>
   <div class="form-group">
     <label for="cn">Password</label>
-    <input type="password" class="form-control" name="password" placeholder="Password">
+    <input type="password" class="form-control" id="p" name="password" placeholder="Password">
   </div>
   <button type="submit" name="submit" class="btn btn-primary">Login</button>
+  <button type="button" class="btn btn-warning" onclick="myFunction()">Demo</button>
 </form>
 </div>
 </div>
@@ -99,6 +100,14 @@ if(isset($_GET['var'])) {
  <?php
   include('footer.php');
  ?>
+
+<script>
+function myFunction() {
+    document.getElementById("u").defaultValue = "diluni@g";
+    document.getElementById("p").defaultValue = "diluni";
+}
+</script>
+
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
