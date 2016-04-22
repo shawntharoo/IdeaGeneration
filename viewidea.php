@@ -43,6 +43,7 @@
   		   					$title = $row['title'];
 							$category = $row['category'];
 							$content = $row['content'];
+              $img = $row['files'];
 						}
 
 					}
@@ -131,10 +132,10 @@
    
    <!--checking if the user is logged in before letting him comment -->
    <?php 
-   		$replyButton ='<input type="submit"  value="POST" name="submit"  class="post_pad btn-sample" disabled="disabled button_design" > You must <a href="./login.php" > login </a> to add a comment' ;
+   		$replyButton ='<input type="submit"  value="POST" name="submit"  class="btn btn-success post_pad btn-sample" disabled="disabled button_design" > You must <a href="./login.php" > login </a> to add a comment' ;
 		 if( isset($_SESSION['userid']) )
 		 {
-			 $replyButton = '<input type="submit"  value="POST" name="submit"  class=" button_design"  >';
+			 $replyButton = '<input type="submit"  value="POST" name="submit"  class="button_design btn btn-success"  >';
    
 		 }
    
@@ -257,6 +258,18 @@
                          <div class="row adjusttop2 "> <!--description-->
                 	     	<?php echo $content ?> 
                          </div>
+                           <div class="row adjusttop3 ">
+                            <!--description-->
+                            <?php
+                              if(strcmp($img,"images/")!=0)
+                              {
+                            ?>
+                           <img src=<?= $img ?> width="300" height="200" class="img img-thumbnail"/>
+                           <?php
+                             }
+                           ?>
+                         </div>
+
                       
                          
                          <!-- form to handle votes -->

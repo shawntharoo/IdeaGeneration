@@ -15,8 +15,11 @@
     include('header.php');
  ?>
 
-
  <div class="container">
+ <a href="view4.php" class="btn btn-success button_design">Back</a>
+ </div>
+ <div class="container">
+
 
        <div class="row">
      <?php
@@ -199,10 +202,30 @@
 			
 			$where ="";	
 		}
-	  
-	  
-	  
+
+		if(isset($_POST["sort"]))
+		{
+		$sortBy = $_POST["sort"];
+	     }
+	  if(isset($_POST["sort"]) && $sortBy != null)
+	  {
+		if  (($_POST["sort"])=="vote"){
+			$sql = "select * from votes AS V JOIN post AS P on V.submissionId=P.postId ".$where." GROUP BY submissionId order by COUNT(voteId) desc";
+		}
+		else if  (($_POST["sort"])=="comment"){
+			$sql = "select * from comment AS C JOIN post AS P on C.submissionId=P.postId ".$where." and commentType='Comment' GROUP BY submissionId order by COUNT(commentId) desc";
+		}
+		else if  (($_POST["sort"])=="improvement"){
+			$sql = "select * from comment AS C JOIN post AS P on C.submissionId=P.postId ".$where." and commentType='Improvement' GROUP BY submissionId order by COUNT(commentId) desc";
+		}
+	  }
+	  else{
 	  $sql="select * from post ".$where;//retrieve data from system storage
+	  }
+	  
+	  
+	  
+	 // $sql="select * from post ".$where;//retrieve data from system storage
 	  include("database_connect.php");    //provide database connection
 	  $result=mysqli_query($con,$sql);
 	   if (mysqli_num_rows($result)==0)
@@ -276,6 +299,18 @@
                <p> <?php echo $row["content"]; ?></p>
              
                </div>
+                 <div class="row">
+               <?php
+               $img=$row["files"];
+                    if(file_exists($img)&&strcmp($img,"images/")!=0)
+                  {
+                      ?>
+               <img src=<?= $row["files"]?> width="200" height="150" class="img img-thumbnail"/>
+                <?php
+                }
+               ?>
+            
+               </div>
                 <div class="row">
                   <div class="col-md-4 departments">
                    <button class="submitidea2"><?php echo $row["faculty"]; ?></button>
@@ -324,7 +359,7 @@
 	                      ?>
                   </div>
                    <div class="col-md-6 iconcolomn">
-                     <?php $sql4="select COUNT(*) AS cmt from comment where submissionId='$id'";//get the comment count
+                     <?php $sql4="select COUNT(*) AS cmt from comment where submissionId='$id' and commentType='Comment'";//get the comment count
 	                       include("database_connect.php");
 	  	                   $result4=mysqli_query($con,$sql4);
 	  

@@ -15,8 +15,9 @@
     include('header.php');
  ?>
  <div class="container" style="margin-left:80px;">
-  <a href="postSubmission.php" class="btn btn-success">Submit Idea</a>
+  <a href="postSubmission.php" class="btn btn-success button_design">Submit Idea</a>
 </div>
+
  <div class="container">
           <nav class="navbar navbar">
              <div class="container-fluid">
@@ -86,7 +87,7 @@
                                      <button class="search_btn" >
                                              <i class="fa fa-search"></i>
                                      </button>
-                                    <a href="advanced.php"> <img src="images/advsearch.png" class="advsearch" height="24px" width="26px"
+                                    <a href="advanced.php" data-toggle="tooltip" data-placement="bottom" title="Advanced Search"> <img src="images/advsearch.png" class="advsearch" height="24px" width="26px"
                                      /></a>
                             </div>
                                   </form>
@@ -106,7 +107,7 @@
 			$where ="WHERE  category='Academic' and faculty='Faculty of Computing'";	
 		}
 	  
-	  $sql="select * from post ".$where; //retrieve data from system storage
+	  $sql="select * from post ".$where." order by dateTime desc"; //retrieve data from system storage
 	  include("database_connect.php");    //provide database connection
 	  $result=mysqli_query($con,$sql);
 	   if (mysqli_num_rows($result)==0)
@@ -180,6 +181,18 @@
                <p> <?php echo $row["content"]; ?></p>
              
                </div>
+               <div class="row">
+               <?php
+               $img=$row["files"];
+                    if(file_exists($img)&&strcmp($img,"images/")!=0)
+                  {
+                      ?>
+               <img src=<?= $row["files"]?> width="200" height="150" class="img img-thumbnail"/>
+                <?php
+                }
+               ?>
+            
+               </div>
                 <div class="row">
                   <div class="col-md-4 departments">
                    <button class="submitidea2"><?php echo $row["faculty"]; ?></button>
@@ -204,6 +217,7 @@
 	          {
 	  
               ?>
+                
                   <div class="row">
                  <button class="submitidea"><?php echo $row2["votes"] ?> Votes</button>
                 </div>
@@ -228,7 +242,7 @@
 	                      ?>
                   </div>
                    <div class="col-md-6 iconcolomn">
-                     <?php $sql4="select COUNT(*) AS cmt from comment where submissionId='$id'";//get the comment count
+                     <?php $sql4="select COUNT(*) AS cmt from comment where submissionId='$id' and commentType='Comment'";//get the comment count
 	                       include("database_connect.php");
 	  	                   $result4=mysqli_query($con,$sql4);
 	  
@@ -246,7 +260,10 @@
                    </div> 
                </div>
              
+          
+          
             </div>
+
          </div>
       </div>
      <?php

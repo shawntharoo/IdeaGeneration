@@ -89,9 +89,9 @@
   <div class="form-group fgroup">
     <label for="sort">Sort By</label>
     <div>
-   <label class="radio-inline"><input type="radio" name="sort" value="male" checked="checked">Top Voted</label>
-   <label class="radio-inline"><input type="radio" name="sort" value="female">Top Comments</label>
-   <label class="radio-inline"><input type="radio" name="sort" value="female">Top Improvements</label>
+   <label class="radio-inline"><input type="radio" name="sort" value="vote">Top Voted</label>
+   <label class="radio-inline"><input type="radio" name="sort" value="comment">Top Comments</label>
+   <label class="radio-inline"><input type="radio" name="sort" value="improvement">Top Improvements</label>
    </div>
   </div>
   <hr/>

@@ -39,8 +39,7 @@ if(isset($_POST['submitted']) == 1){
    }
   else
    {
-	  
-     	echo "Error in Uploading Image";
+
    }
 
 	

@@ -4,7 +4,7 @@
 	include('autoinc.php'); //including the file containing the function to auto increment the comment id (eg: C_1)
 	session_start();
 	
-	$userId = $_SESSION["userId"];
+	$userId = $_SESSION["userid"];
  	$description = $_POST["description"];
 	$commentType = $_POST["commentType"];
 	$submissionId = $_POST["subId"];
