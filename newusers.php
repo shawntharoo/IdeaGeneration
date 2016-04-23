@@ -90,7 +90,7 @@ $result=mysqli_query($con,$query);
 		<p>Contact No    : <?php echo $row['contact']?></p>
         <p><a href="approve.php?sendId=<?= $row['id'] ?>" onclick="pop_up(this);return false;" class="btn btn-info" role="button">View</a>
         <button type="button" name="button" class="btn btn-success" onclick="javascript:ApproveUser(<?php echo $row['id']; ?>)">Approve</button>
-<button type="button" name="button" class="btn btn-danger" onclick="javascript:delete_id(<?php echo $row['id']; ?>)">Delete</button></p>
+<button type="button" name="button" class="btn btn-danger" onclick="javascript:delete_id(<?php echo $row['id']; ?>)">Reject</button></p>
       </div>
     </div>
   </div>

@@ -97,7 +97,7 @@ while($row=mysqli_fetch_array($result)){?>
 <!--<button type="submit" class="btn btn-danger"  name="confirm">Update</button>-->
 <button type="button" class="btn btn-primary" onclick="closeWin()">Cancel </button>
 <button type="button" name="button" class="btn btn-success" onclick="javascript:ApproveUser(<?php echo $row['id']; ?>)">Approve</button>
-<button type="button" name="button" class="btn btn-danger" onclick="javascript:delete_id(<?php echo $row['id']; ?>)">Delete</button>
+<button type="button" name="button" class="btn btn-danger" onclick="javascript:delete_id(<?php echo $row['id']; ?>)">Reject</button>
 </div>
 <input type="hidden" name="postid" value="<?php echo $row['id']; ?>">
 </form>
