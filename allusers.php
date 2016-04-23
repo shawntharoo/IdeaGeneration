@@ -86,11 +86,10 @@ $result=mysqli_query($con,$query);
     <div class="thumbnail">
       <div class="caption">
       <img src="<?php echo $row['Image']?>" height="120px" width="180px" align="middle">
-        <h3><?php echo $row['fname']." ".$row['lname'] ?></h3>
+        <h3><?php echo $row['fname']?></h3>
         <p>Registered ID : <?php echo $row['id'] ?></p>
         <p>University ID : <?php echo $row['universityID']; ?></p>
         <p>Gender        : <?php echo $row['gender'] ?></p>
-        <p>Address       : <?php echo $row['address'] ?></p>
 		<p>Category      : <?php echo $row['category'] ?></p>
 		<p>Email         : <?php echo $row['emil']; ?></p>
 		<p>Contact No    : <?php echo $row['contact']?></p>
