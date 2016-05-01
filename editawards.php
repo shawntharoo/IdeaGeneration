@@ -110,6 +110,7 @@ $_SESSION['imagepath'] = $row['image'];
 <div class="form-group">
 <label for="ima">Upload Award</label>
 <input type="file" name="input" id="i"/>
+<h5>If you dont want to change the image keep this place Empty</h5>
 </div>
 <div class="form-group">
 <button type="submit" class="btn btn-primary" value="submit">ADD </button>
