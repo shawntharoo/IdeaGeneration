@@ -23,12 +23,13 @@ function validateform(){
       document.form1.level.focus();
       return false;
    }
- /*  if (document.form1.input.value == "")
+     if (document.form1.postcount.value == "")
    {
-      alert("Please upload the badge");
-      document.form1.input.focus();
+      alert("Please enter the Postcount Relate to the badge");
+      document.form1.postcount.focus();
       return false;
-   }*/
+   }
+
      if (document.form1.dis.value == "")
    {
       alert("Please enter a brief description");
@@ -57,7 +58,7 @@ if ( isset($_GET['sendId'])){
   
 $sendID = $_GET['sendId'];
 echo "<script> window.postid = ".$sendID." </script>";
-$result=mysqli_query($con,"Select * from awards where id='".$sendID."' ");
+$result=mysqli_query($con,"Select * from reward where id='".$sendID."' ");
 if (!$result) {
 printf("Error: %s\n", mysqli_error($con));
 exit();
@@ -65,7 +66,7 @@ exit();
 
 while($row=mysqli_fetch_array($result)){
 
-$_SESSION['imagepath'] = $row['image'];
+$_SESSION['imagepath'] = $row['img'];
  include('header.php');
  ?>
 <div class="container">
@@ -103,18 +104,22 @@ $_SESSION['imagepath'] = $row['image'];
 </div>
 
 <div class="form-group">
+<label for="post">Postcount</label>
+<input type="text" class="form-control" name="postcount" value="<?php echo $row['postcount'] ?>">
+</div>
+
+<div class="form-group">
 <label for="dis">Description</label>
 <input type="text" class="form-control" name="dis" value="<?php echo $row['description'] ?>">
 </div>
 
 <div class="form-group">
-<label for="ima">Upload Award</label>
-<input type="file" name="input" id="i"/>
-<h5>If you dont want to change the image keep this place Empty</h5>
+<label for="input">Upload Award</label>
+<input type="file" name="input"/>
 </div>
+
 <div class="form-group">
-<button type="submit" class="btn btn-primary" value="submit">ADD </button>
-<!--<button type="button" name="button" class="btn btn-success" onclick="javascript:ViewAward(<?php echo $row['id']; ?>)">Edit</button>-->
+<button type="submit" class="btn btn-primary" value="submit">Edit </button>
 </div>
 <input type="hidden" name="postid" value="<?php echo $row['id']; ?>">
 </form>

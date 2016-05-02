@@ -23,6 +23,12 @@ function validateform(){
       document.form1.level.focus();
       return false;
    }
+  if (document.form1.postcount.value == "")
+   {
+      alert("Please enter the Postcount Relate to the badge");
+      document.form1.postcount.focus();
+      return false;
+   }
    if (document.form1.input.value == "")
    {
       alert("Please upload the badge");
@@ -69,6 +75,11 @@ return true;
  <div class="form-group">
     <label for="cn">Level</label>
     <input type="text" class="form-control" name="level" id="u" placeholder="Enter the level which award belongs to">
+  </div>
+
+   <div class="form-group">
+    <label for="cn">Postcount</label>
+    <input type="text" class="form-control" name="postcount" id="u" placeholder="Enter the postcount which award belongs to">
   </div>
 
 <div class = "form-group">

@@ -74,7 +74,7 @@ include("database_connect.php");
 if(mysqli_connect_errno()){
 echo "failed to connect to MySQL.".mysqli_connect_error();
 }
-$query = "select * from awards where type = 'comments'";
+$query = "select * from reward where type = 'comments'";
 $result=mysqli_query($con,$query);
 
 
@@ -86,11 +86,12 @@ $result=mysqli_query($con,$query);
   <div class="col-xs-6 col-md-3">
     <div class="thumbnail">
       <div class="caption">
-      <img src="<?php echo $row['image']?>" height="120px" width="115px" align="middle">
+      <img src="<?php echo $row['img']?>" height="120px" width="115px" align="middle">
         <p>Badge ID : <?php echo $row['id'] ?></p>
         <p>Badge Name : <?php echo $row['name']; ?></p>
         <p>Badge Type        : <?php echo $row['type'] ?></p>
         <p>Badge Level      : <?php echo $row['level'] ?></p>
+         <p>Badge PostCount      : <?php echo $row['postcount'] ?></p>
         <!--<p>Badge Description      : <?php// echo $row['description'] ?></p>-->
         <p><a href="viewAwards.php?sendId=<?= $row['id'] ?>" onclick="pop_up(this);return false;" class="btn btn-primary" role="button">View</a>
         <button type="button" name="button" class="btn btn-success" onclick="javascript:Edit_id(<?php echo $row['id']; ?>)">Edit</button>
@@ -121,7 +122,7 @@ include("database_connect.php");
 if(mysqli_connect_errno()){
 echo "failed to connect to MySQL.".mysqli_connect_error();
 }
-$query = "select * from awards where type = 'vote'";
+$query = "select * from reward where type = 'vote'";
 $result=mysqli_query($con,$query);
 
 
@@ -133,11 +134,12 @@ $result=mysqli_query($con,$query);
   <div class="col-xs-6 col-md-3">
     <div class="thumbnail">
       <div class="caption">
-      <img src="<?php echo $row['image']?>" height="120px" width="115px" align="middle">
+      <img src="<?php echo $row['img']?>" height="120px" width="115px" align="middle">
         <p>Badge ID : <?php echo $row['id'] ?></p>
         <p>Badge Name : <?php echo $row['name']; ?></p>
         <p>Badge Type        : <?php echo $row['type'] ?></p>
         <p>Badge Level      : <?php echo $row['level'] ?></p>
+        <p>Badge PostCount      : <?php echo $row['postcount'] ?></p>
         <p><a href="viewAwards.php?sendId=<?= $row['id'] ?>" onclick="pop_up(this);return false;" class="btn btn-primary" role="button">View</a>
           <button type="button" name="button" class="btn btn-success" onclick="javascript:Edit_id(<?php echo $row['id']; ?>)">Edit</button>
         <button type="button" name="button" class="btn btn-danger" onclick="javascript:delete_id(<?php echo $row['id']; ?>)">Delete</button>
@@ -166,7 +168,7 @@ include("database_connect.php");
 if(mysqli_connect_errno()){
 echo "failed to connect to MySQL.".mysqli_connect_error();
 }
-$query = "select * from awards where type = 'submission'";
+$query = "select * from reward where type = 'submission'";
 $result=mysqli_query($con,$query);
 
 
@@ -178,11 +180,12 @@ $result=mysqli_query($con,$query);
   <div class="col-xs-6 col-md-3">
     <div class="thumbnail">
       <div class="caption">
-      <img src="<?php echo $row['image']?>" height="120px" width="115px" align="middle">
+      <img src="<?php echo $row['img']?>" height="120px" width="115px" align="middle">
         <p>Badge ID : <?php echo $row['id'] ?></p>
         <p>Badge Name : <?php echo $row['name']; ?></p>
         <p>Badge Type        : <?php echo $row['type'] ?></p>
         <p>Badge Level      : <?php echo $row['level'] ?></p>
+        <p>Badge PostCount      : <?php echo $row['postcount'] ?></p>
         <p><a href="viewAwards.php?sendId=<?= $row['id'] ?>" onclick="pop_up(this);return false;" class="btn btn-primary" role="button">View</a>
           <button type="button" name="button" class="btn btn-success" onclick="javascript:Edit_id(<?php echo $row['id']; ?>)">Edit</button>
         <button type="button" name="button" class="btn btn-danger" onclick="javascript:delete_id(<?php echo $row['id']; ?>)">Delete</button>
