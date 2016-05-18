@@ -1,0 +1,2 @@
+# IdeaGeneration
+Idea Generating System
