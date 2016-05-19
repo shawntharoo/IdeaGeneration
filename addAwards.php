@@ -58,7 +58,7 @@ return true;
 <div class="row">
 <div class="col-md-3">
 <br/><br/><br/>
- <img src="images/award.jpg" class="img-responsive" alt="">
+ <img src="images/awards.jpg" class="img-responsive" alt="">
 </div>
 <div class="col-md-6">
 <div class="panel panel-default">
@@ -111,7 +111,7 @@ return true;
 
 <div class="col-md-3">
 <br/><br/><br/>
- <img src="images/award.jpg" class="img-responsive" alt="">
+ <img src="images/awards.jpg" class="img-responsive" alt="">
 </div>
 </div>
 </div>
