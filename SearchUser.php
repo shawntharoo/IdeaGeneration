@@ -122,14 +122,17 @@
   opacity: 1;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
-.userprf .follow {
-  margin-right: 4%;
-  border-color: #66CC00;
-  color: #66CC00;
-}
+
 .userprf h2 {
   margin: 0 0 5px;
   font-weight: 300;
+  width: 800px;
+}
+
+.userprf .info {
+  margin: 0 0 5px;
+  font-weight: 300;
+  width: 250px;
 }
 .userprf h2 span {
   display: block;
@@ -195,16 +198,19 @@ input[type=text]:focus {
               <a class = "navbar-brand" href = "#">Admin Page</a>
            </div>
            
-           <div style="font-size:20px">
+          <div style="font-size:20px">
           
                             <div class="nav">
                                           <ul class = "nav navbar-nav pull-right">
                                                 <li class = "active"><a href = "SearchUser.php">Users</a></li>
                                                 <li class = "active"><a href = "editSubmissionCompu.php">Submission</a></li>
+                                                 <li class = "active"><a href = "newusers.php">New Users</a></li>
+                                                <li class = "active"><a href = "allusers.php">Current User</a></li>
                                                  
                                           </ul>
                              </div>
               </div>
+
 
 </nav>
 
@@ -266,7 +272,7 @@ input[type=text]:focus {
      if($cat=="fname"){
 		 $where="fname like '%$search%' OR lname like '%$search%'";
 		 }
-		$sql="select * from register where ".$where;
+		$sql="select * from register where category!='Operator' and ".$where;
 	   
 	  include("database_connect.php");    //provide database connection
 	  $result=mysqli_query($con,$sql);
@@ -286,47 +292,12 @@ input[type=text]:focus {
  
  <figure class="userprf">
   <figcaption>
-  <div class="col-md-6">
   <img src="<?php echo $row['Image']; ?>" alt="profile-sample5" class="profile" />
     <h2><?php echo $row['fname']; ?><span><?php echo $row['lname']; ?></span></h2>
     <h5><?php echo $row['universityID']; ?> </h5>
     <h5><?php echo $row['category']; ?> </h5>
     <h5><?php echo $row['emil']; ?> </h5>
-    </div>
-     <div class="col-md-6">
-     <!-- show reward-->
-       <?php 
-	   if($row['reward']==1) 
-	   {
-		   ?>
-		  <img src="images/reward1.png" height="40px" width="40px" />
-	   
-	    <?php 
-	   }
-	   ?>
-       <?php
-	    if($row['reward']==2) 
-	   {
-		   ?>
-		      <img src="images/reward1.png" height="40px" width="40px" />
-              <img src="images/reward2.png" height="40px" width="40px" /> 
-			  <?php 
-	   }
-	   ?>
-        <?php
-	    if($row['reward']==3) 
-	   {
-		   ?>
-		      <img src="images/reward1.png" height="40px" width="40px" />
-              <img src="images/reward2.png" height="40px" width="40px" /> 
-              <img src="images/reward3.png" height="40px" width="40px" /> 
-			  <?php 
-	   }
-	   ?>
-       <!-- end of show reward-->
-      </div>
     
-    <a href="#" class="follow">Edit</a>
    <a href="userProfile.php?id=<?=$row["id"]?>" class="info">More Info</a>
   </figcaption>
 </figure>

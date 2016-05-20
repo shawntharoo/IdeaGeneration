@@ -1,9 +1,11 @@
 <?php
 	
 	include('database_connect.php');
+	
 	include('autoinc.php'); //including the file containing the function to auto increment the comment id (eg: C_1)
 	session_start();
 	
+
 	$userId = $_SESSION["userid"];
  	$description = $_POST["description"];
 	$commentType = $_POST["commentType"];
@@ -25,38 +27,43 @@
 	{
 		
 		//That means this is a comment. Therefore add to the comment table
-		$sqlInsertComment = "INSERT INTO comment(commentId,submissionId,userId,description,date,commentType) 		 	VALUES('$commentId','$submissionId','$userId','$description','$dateValue','Comment')";
+		$sqlInsertComment = "INSERT INTO comment(commentId,submissionId,userId,description,date,commentType) VALUES('$commentId','$submissionId','$userId','$description','$dateValue','Comment')";
 		if(mysqli_query($con,$sqlInsertComment))
 		{
 			
 			/*echo "<script type='text/javascript' > alert('Thank You. We successfully added your comment') </script>";*/
 			$submitid =1;
-			header('location:viewidea.php?id='.$submissionId.'&submitid='.$submitid);
+			
+			header('location:viewidea.php?id='.$submissionId.'&submitid='.$submitid.'&comt=0');
+			
 		}
 		else
 		{
-			
-			echo "<script type='text/javascript' > alert('error : '".mysqli_error($con).") </script>";
+			$submitid =0;
+			/*echo "<script type='text/javascript' > alert('error : '".mysqli_error($con).") </script>";*/
+			header('location:viewidea.php?id='.$submissionId.'&submitid='.$submitid.'&comt=0');
 		}
 		
 	}
 	else
 	{
-		//That means this is the other option. Which is an improvement. Therefore add to improvement table
+		include('rewardcheck3.php');//That means this is the other option. Which is an improvement. Therefore add to improvement table
 		$sqlInsertImprovement = "INSERT INTO comment(commentId,submissionId,userId,description,date,commentType) VALUES('$commentId','$submissionId','$userId','$description','$dateValue','Improvement')";
 		if(mysqli_query($con,$sqlInsertImprovement))
 		{
 			/*echo "<script type='text/javascript' > alert('Thank You. We successfully added your Improvement submission')</script>";*/
 			$submitid =2;
-			header('location:viewidea.php?id='.$submissionId.'&submitid='.$submitid);
+			header('location:viewidea.php?id='.$submissionId.'&submitid='.$submitid.'&comt=0');
 		}
 		else
 		{
-			echo "<script type='text/javascript' > alert('error : '".mysqli_error($con).") </script>";
+			$submitid =0;
+			/*echo "<script type='text/javascript' > alert('error : '".mysqli_error($con).") </script>";*/
+			header('location:viewidea.php?id='.$submissionId.'&submitid='.$submitid.'&comt=0');
 		}
 		
 	}
-
+	//return $submitid;
 	mysqli_close($con);
 
 ?>

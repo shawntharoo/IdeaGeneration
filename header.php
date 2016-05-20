@@ -21,7 +21,7 @@
 		}else{
 			?>
              <div class="row">
-             <img src="<?=$_SESSION["photo"]?>" height="60px" width="60px"/>
+             <a class="alink" href="userProfile.php?id=<?=$_SESSION["userid"]?>"><img src="<?=$_SESSION["photo"]?>" height="60px" width="60px"/></a>
              </div> 
              <div class="row" style="color:#FFF">
              <?= $_SESSION["name"] ?>

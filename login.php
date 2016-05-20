@@ -44,7 +44,7 @@ function validateform(){
 <h4 class="panel-title" align="center">Login Form</h4>
 </div>
 <div class="panel-body">
-<form name="form2" method="POST"  action="login_form.php" onSubmit="return validateform();">
+<form name="form2" method="POST" action="login_form.php" onSubmit="return validateform();">
   <div class="form-group">
     <label for="ema">Email Address</label>
     <input type="text" class="form-control" name="username" placeholder="Email">
@@ -59,29 +59,7 @@ function validateform(){
 </div>
 </div>
 </div>
-<div class="progress">
-  <div id="myBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
-    <span class="sr-only">45% Complete</span>
-  </div>
 </div>
-</div>
-
-<script>
-function move() {
-  var elem = document.getElementById("myBar");   
-  var width = 1;
-  var id = setInterval(frame, 10);
-  function frame() {
-    if (width >= 100) {
-      clearInterval(id);
-    } else {
-      width++; 
-      elem.style.width = width + '%'; 
-    }
-  }
-
-}
-</script>
 
   <?php
 if(isset($_GET['var'])) {

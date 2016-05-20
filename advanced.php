@@ -13,22 +13,7 @@
    <script type="text/javascript" src="js/bootstrap-slider.js"></script>
  <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript">
-  function check()
-  {
-
-    var nameElement=document.getElementById("pslider").value;
-     if(nameElement.value)
-     {
-        
-        alert("yes".nameElement);
-    return true;   
-    }
-    else
-    {
-    alert("Enter Name Please !");
-    return false;
-    }
-  }
+ 
  </script>
 
 </head>
@@ -98,16 +83,9 @@
                
                  });
                  </script> 
-                 <input id="ex6" type="text" name="slider" data-slider-ticks="[0, 100, 200, 300, 400]" data-slider-ticks-snap-bounds="30" data-slider-ticks-labels='["$0", "$100", "$200", "$300", "$400"]'/>
-                <span id="ex6CurrentSliderValLabel">Current Slider Value: <p id="pslider"> <span id="ex6SliderVal">3</span></p></span>
-                  <script type="text/javascript">
-               $("#ex6").slider();
-$("#ex6").on("slide", function(slideEvt) {
-  $("#ex6SliderVal").text(slideEvt.value);
-});
-
+                
+              
                   
-                  </script> 
       </div>
       <hr/>
   <div class="form-group fgroup">
