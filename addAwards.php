@@ -85,7 +85,7 @@ return true;
 <div class = "form-group">
 <label for="typel">Select the Award Type  -></label>
 <select name="type">
-  <option value="Comments">Comments</option>
+  <option value="Improvement">Improvement</option>
   <option value="Vote">vote</option>
   <option value="submission">submission</option>
   </select>

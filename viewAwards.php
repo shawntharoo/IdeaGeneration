@@ -50,7 +50,7 @@ while($row=mysqli_fetch_array($result)){?>
 <div class="form-group">
 <label for="fnam">Type</label>
 <select name="type">
-  <option value="Comments" <?php if (!empty($instruction) && $instruction == 'comments')  echo 'selected = "selected"'; ?>>Comments</option>
+  <option value="Improvement" <?php if (!empty($instruction) && $instruction == 'Improvement')  echo 'selected = "selected"'; ?>>Improvement</option>
 <option value="vote" <?php if (!empty($instruction) && $instruction == 'vote')  echo 'selected = "selected"'; ?>>Vote</option>
 <option value="submission" <?php if (!empty($instruction) && $instruction == 'submission')  echo 'selected = "selected"'; ?>>Submission</option>
 </select>
