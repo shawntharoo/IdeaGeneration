@@ -8,8 +8,7 @@
 
 <!-- bootstrap table scripts -->
 
-
-
+<script src="//static.miniclipcdn.com/js/game-embed.js"></script>
 
 
 <!-- popup the edit window -->
@@ -17,138 +16,51 @@
 <!-- end of the popup window -->
 <title>IDEAPOOL Gemification Page</title>
 <!-- body style/ table margin -->
-
 </head>
 
 
 
 
 <body>
-<p>Test your Response time!</p>
-Click on "Start" first, and wait until the background color changes. As soon as it changes, hit "stop!"
+<?php
+include('header.php');
+?>
+<div class="container">
+<h3>Available games In the WebSite </h3><br/>
+<div class="row">
+<div class="col-md-3">
+<div class="miniclip-game-embed" data-game-name="thunderbirds" data-theme="0" data-width="350" data-height="400" data-language="en"><a href="http://www.miniclip.com/games/thunderbirds/">Play Thunderbirds Are Go: Team Rush</a></div><br/>
+<button type="submit" class="btn btn-primary" value="submit">Show Game</button>
+</div>
+<div class="col-md-1">
+</div>
+<div class="col-md-3">
+<div class="miniclip-game-embed" data-game-name="8-ball-pool-multiplayer" data-theme="0" data-width="350" data-height="400" data-language="en"><a href="http://www.miniclip.com/games/8-ball-pool-multiplayer/">Play 8 Ball Pool</a></div><br/>
+<button type="submit" class="btn btn-primary" value="submit">Show Game</button>
+</div>
+<div class="col-md-1">
+</div>
+<div class="col-md-3">
+<div class="miniclip-game-embed" data-game-name="basketball-stars" data-theme="0" data-width="350" data-height="400" data-language="en"><a href="http://www.miniclip.com/games/basketball-stars/">Play Basketball Stars</a></div><br/>
+<button type="submit" class="btn btn-primary" value="submit">Show Game</button>
+</div>
+<div class="col-md-1">
+</div>
+</div><br/>
 
-<script language="JavaScript">
-<!--
+<div class="row">
+<div class="col-md-3">
+<div class="miniclip-game-embed" data-game-name="free-running-2" data-theme="0" data-width="350" data-height="400" data-language="en"><a href="http://www.miniclip.com/games/free-running-2/">Play Free Running 2</a></div><br/>
+<button type="submit" class="btn btn-primary" value="submit">Show Game</button>
+</div>
 
-//Reflext Tester- By Andy Scott (based on script by Jasper van Zandbeek)
-//http://www.geocities.com/SiliconValley/Station/4320/
-//Submitted to Dynamic Drive for inclusion
-//Visit http://www.dynamicdrive.com for this script
-
-var startTime=new Date();
-var endTime=new Date();
-var startPressed=false;
-var bgChangeStarted=false;
-var maxWait=20;
-var timerID;
-
-
-var colors=new Array("tomato","chocolate","limegreen","crimson","darkslategray",
-"aliceblue","mediumslateblue","cornflowerblue","darkorchid","darkkhaki","coral",
-"darkolivegreen","cadetblue")
-
-if (document.all||document.getElementById)
-document.write('<div id="reflex" style="width:135px;height:135px;border:1px solid black" onClick="stopTest()"></div>')
-
-function startTest()
-{
-        if (document.all)
-        document.all.reflex.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
-        else if (document.getElementById)
-	document.getElementById("reflex").style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
-        else if (document.layers)
-        document.reflexns.document.reflexns_sub.document.bgColor=colors[Math.floor(Math.random()*colors.length)];
-	bgChangeStarted=true;
-	startTime=new Date();
-}
-
-function remark(responseTime)
-{
-	var responseString="";
-	if (responseTime < 0.10)
-		responseString="Well done!";
-	if (responseTime >= 0.10 && responseTime < 0.20)
-		responseString="Nice!";
-	if (responseTime >=0.20 && responseTime < 0.30)
-		responseString="Could be better...";
-	if (responseTime >=0.30 && responseTime < 0.60)
-		responseString="Keep practising!";
-	if (responseTime >=0.60 && responseTime < 1)
-		responseString="Have you been drinking?";
-	if (responseTime >=1)
-		responseString="Did you fall asleep?";
-
-	return responseString;
-}
-
-function stopTest()
-{
-	if(bgChangeStarted)
-	{
-		endTime=new Date();
-		var responseTime=(endTime.getTime()-startTime.getTime())/1000;
-                if (document.all)
-		document.all.reflex.style.backgroundColor="white";
-                else if (document.getElementById)
-		document.getElementById("reflex").style.backgroundColor="white";
-                else if (document.layers)
-                document.reflexns.document.reflexns_sub.document.bgColor="white";      
-		alert("Your response time is: " + responseTime + " seconds " + "\n" + remark(responseTime));
-		startPressed=false;
-		bgChangeStarted=false;
-	}
-	else
-	{
-		if (!startPressed)
-		{
-			alert("press start first to start test");
-		}
-		else
-		{       
-			clearTimeout(timerID);
-			startPressed=false;             
-			alert("cheater! you pressed too early!");
-		}               
-	}
-}
-
-var randMULTIPLIER=0x015a4e35;
-var randINCREMENT=1;
-var today=new Date();
-var randSeed=today.getSeconds();
-function randNumber()
-{
-	randSeed = (randMULTIPLIER * randSeed + randINCREMENT) % (1 << 31);
-	return((randSeed >> 15) & 0x7fff) / 32767;
-}
-
-function startit()
-{
-	if(startPressed)
-	{
-		alert("Already started. Press stop to stop");
-		return;
-	}
-	else
-	{
-		startPressed=true; 
-		timerID=setTimeout('startTest()', 6000*randNumber());
-	}
-}
-// --> 
-</script>
-<br>
+</div>
 
 
-<ilayer id="reflexns" width=135; height=135;><layer id="reflexns_sub" width=135; height=135; left=0 top=0 bgColor=yellow></layer></ilayer>
-
-<form name="response">
-
-<input type="button" value="  start  " onClick="startit()" style="font-weight:bold">
-<input type="button" value="  stop  " onClick="stopTest()" style="font-weight:bold">
-</form>
-
-<p align="center"><font face="Arial" size="-2">Free DHTML scripts provided by<br>
-<a href="http://www.dynamicdrive.com">Dynamic Drive</a></font></p>
+</div>
+<br/>
+<?php
+include('footer.php');
+?>
 </body>
 </html>

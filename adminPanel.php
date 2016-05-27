@@ -23,6 +23,7 @@ include('header.php');
   <li role="presentation"><a href="adminProfile.php">Profile</a></li>
   <li role="presentation"><a href="editSubmissionCompu.php">Submission</a></li>
   <li role="presentation"><a href="awardDisplay.php">Reward</a></li>
+  <li role="presentation"><a href="Gemification.php">Games</a></li>
 </ul>
 </div>
 
