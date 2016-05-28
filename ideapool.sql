@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2016 at 08:44 PM
+-- Generation Time: May 28, 2016 at 05:21 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -144,8 +144,21 @@ INSERT INTO `faculty` (`facId`, `facName`, `facImg`) VALUES
 
 CREATE TABLE IF NOT EXISTS `games` (
   `ID` int(11) NOT NULL,
-  `Availability` int(11) NOT NULL
+  `Availability` int(11) NOT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `games`
+--
+
+INSERT INTO `games` (`ID`, `Availability`) VALUES
+(1, 1),
+(2, 0),
+(3, 1),
+(4, 0),
+(5, 0),
+(6, 1);
 
 -- --------------------------------------------------------
 
