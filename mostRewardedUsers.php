@@ -46,7 +46,7 @@ while($row=mysqli_fetch_array($result)){
   </div>
   <div class="media-body">
     <h4 class="media-heading"><?php echo $row['fname'].' '.$row['lname']; ?></h4>
-    Pizza is a flatbread generally topped with tomato sauce and cheese and baked in an oven. It is commonly topped with a selection of meats, vegetables and condiments. The term was first recorded in the 10th century, in a Latin manuscript from Gaeta in Central Italy.[1] The modern pizza was invented in Naples, Italy, and the dish and its variants have since become popular in many areas of the world.[2]
+   <img class="media-object" src="<?php echo $row['Image']?>" height="70px" width="60px" align="middle">
   </div>
 </div>
 <?php

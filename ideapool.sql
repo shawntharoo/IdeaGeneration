@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2016 at 05:21 AM
+-- Generation Time: May 29, 2016 at 05:28 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -153,12 +153,12 @@ CREATE TABLE IF NOT EXISTS `games` (
 --
 
 INSERT INTO `games` (`ID`, `Availability`) VALUES
-(1, 1),
+(1, 0),
 (2, 0),
-(3, 1),
+(3, 0),
 (4, 0),
 (5, 0),
-(6, 1);
+(6, 0);
 
 -- --------------------------------------------------------
 

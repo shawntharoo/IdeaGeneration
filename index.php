@@ -150,23 +150,110 @@
           <p> dvndvndvndknvvnvndkvndknbdkkdn</p>
           </div>
        </div>
-         <div class="col-md-3 box">
-          <div class="row greenboxx">
-            <h2>MOST FEATURED</h2>
-          </div>
-          <div class="row greenbox">
-           <img src="images/user2.jpg" width="60px" height="60px" class="img-responsive boximg" />
-          </div>
-          <div class="row greenboxx">
-           <h3>Student Affairs</h3>
-          </div>
-          <div class="row description">
-         <p> akvnkdnoendnneknnnlanl;cncnscon</p>
-          <p> nnnrndknknkdnvknkkvndkndkvnknk</p>
-          <p> dkvnkvnkvnkvnkvnvknkndkvnddnvk</p>
-          <p> dvndvndvndknvvnvndkvndknbdkkdn</p>
-          </div>
-       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Start From Here -->
+
+<script src="//static.miniclipcdn.com/js/game-embed.js"></script>
+<?php
+include("database_connect.php");
+
+if(mysqli_connect_errno()){
+echo "failed to connect to MySQL.".mysqli_connect_error();
+}
+?>
+<br/>
+ <div class="col-md-3">
+<?php
+$query1 = "select * from games where ID = '1'";
+$result1=mysqli_query($con,$query1);
+while($row=mysqli_fetch_array($result1)){ 
+  $Available1 = $row['Availability'];
+}
+$query2 = "select * from games where ID = '2'";
+$result2=mysqli_query($con,$query2);
+while($row=mysqli_fetch_array($result2)){ 
+  $Available2 = $row['Availability'];
+}
+$query3 = "select * from games where ID = '3'";
+$result3=mysqli_query($con,$query3);
+while($row=mysqli_fetch_array($result3)){ 
+  $Available3 = $row['Availability'];
+}
+$query4 = "select * from games where ID = '4'";
+$result4=mysqli_query($con,$query4);
+while($row=mysqli_fetch_array($result4)){ 
+  $Available4 = $row['Availability'];
+}
+$query5 = "select * from games where ID = '5'";
+$result5=mysqli_query($con,$query5);
+while($row=mysqli_fetch_array($result5)){ 
+  $Available5 = $row['Availability'];
+}
+$query6 = "select * from games where ID = '6'";
+$result6=mysqli_query($con,$query6);
+while($row=mysqli_fetch_array($result6)){ 
+  $Available6 = $row['Availability'];
+}
+  if($Available1 == 1){ ?>
+<div class="miniclip-game-embed" data-game-name="thunderbirds" data-theme="0" data-width="350" data-height="400" data-language="en"><a href="http://www.miniclip.com/games/thunderbirds/">Play Thunderbirds Are Go: Team Rush</a></div>
+ <?php } else if($Available2 == 1){ ?>
+ <div class="miniclip-game-embed" data-game-name="free-running-2" data-theme="0" data-width="350" data-height="400" data-language="en"><a href="http://www.miniclip.com/games/free-running-2/">Play Free Running 2</a></div><br/>
+  <?php } else if($Available3 == 1){?>
+  <div class="miniclip-game-embed" data-game-name="8-ball-pool-multiplayer" data-theme="0" data-width="350" data-height="400" data-language="en"><a href="http://www.miniclip.com/games/8-ball-pool-multiplayer/">Play 8 Ball Pool</a></div><br/>
+ <?php } else if($Available4 == 1){?>
+<div class="miniclip-game-embed" data-game-name="basketball-stars" data-theme="0" data-width="350" data-height="400" data-language="en"><a href="http://www.miniclip.com/games/basketball-stars/">Play Basketball Stars</a></div><br/>
+<?php } else if($Available5 == 1){?>
+<div class="miniclip-game-embed" data-game-name="big-snow-tricks" data-theme="0" data-width="350" data-height="400" data-language="en"><a href="http://www.miniclip.com/games/big-snow-tricks/">Play Big Snow Tricks</a></div><br/>
+<?php } else if($Available6 == 1){?>
+<div class="miniclip-game-embed" data-game-name="bow-master-japan" data-theme="0" data-width="350" data-height="400" data-language="en"><a href="http://www.miniclip.com/games/bow-master-japan/">Play Bow Master Japan</a></div><br/>
+<?php } else{?>
+  <img class="media-object" src="images/under-construction-20-19.jpg" height="250px" width="300px" align="middle">
+<?php } ?>
+</div>
+<!--End Here -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
          <div class="col-md-3 box">
           <div class="row greenboxx">
             <h2>TOP VOTES</h2>
