@@ -24,6 +24,7 @@ include('header.php');
   <li role="presentation"><a href="editSubmissionCompu.php">Submission</a></li>
   <li role="presentation"><a href="awardDisplay.php">Reward</a></li>
   <li role="presentation"><a href="Gemification.php">Games</a></li>
+  <li role="presentation"><a href="mostRewardedUsers.php">Most Rewarded Users</a></li>
 </ul>
 </div>
 
