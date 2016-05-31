@@ -96,7 +96,7 @@ $result=mysqli_query($con,$query);
   <div class="col-xs-6 col-md-3">
     <div class="thumbnail">
       <div class="caption">
-      <img src="<?php echo $row['img']?>" height="120px" width="115px" align="middle"><img class="LevelImg" src="images/201SN_full.jpg" height="50px" width="60px">
+      <img src="<?php echo $row['img']?>" height="120px" width="115px" align="middle">
         <p>Badge ID : <?php echo $row['id'] ?></p>
         <p>Badge Name : <?php echo $row['name']; ?></p>
         <p>Badge Type        : <?php echo $row['type'] ?></p>

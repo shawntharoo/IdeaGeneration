@@ -7,7 +7,43 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> 
  <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
+<link href='http://fonts.googleapis.com/css?family=Asul:400,700' rel='stylesheet' type='text/css'>
+
+<link type="text/css" rel="stylesheet" href="sideviewmenu.css" />
+
+<script src="sideviewmenu.js">
+
+</script>
+
+<script>
+
+jQuery(function(){ // on DOM Load
+  sideviewmenu({ // call sideviewmenu() function
+    menuid: 'sideviewmenu',
+    onopenclose:function(state){ // state is either "open" or "closed"
+      // custom code
+    }
+  })
+})
+
+jQuery(function(){ // on DOM Load
+  sideviewmenu() // call sideviewmenu() function
+})
+
+</script>
+
+<style>
+<!--
+.styling{
+background-color:black;
+color:lime;
+font: bold 18px MS Sans Serif;
+padding: 3px;
+}
+-->
+</style>
 </head>
 <body>
 
@@ -18,13 +54,16 @@ include('header.php');
 
  <div class="col-md-3"><br/>
  <ul class="nav nav-pills nav-stacked">
-  <li role="presentation"><a href="index.php">Home</a></li>
+
+<h3>View Side Menu </h3><br/>
+<div class="toggler" onClick="sideviewmenu.toggle()"></div>
+ <!-- <li role="presentation"><a href="index.php">Home</a></li>
     <li role="presentation" class="active"><a href="adminPanel.php">Dashboard</a></li>
   <li role="presentation"><a href="adminProfile.php">Profile</a></li>
   <li role="presentation"><a href="editSubmissionCompu.php">Submission</a></li>
   <li role="presentation"><a href="awardDisplay.php">Reward</a></li>
   <li role="presentation"><a href="Gemification.php">Games</a></li>
-  <li role="presentation"><a href="mostRewardedUsers.php">Most Rewarded Users</a></li>
+  <li role="presentation"><a href="mostRewardedUsers.php">Most Rewarded Users</a></li>-->
 </ul>
 </div>
 
@@ -47,6 +86,7 @@ include('header.php');
         ...
       </div>
     </div>
+
     <div class="item">
        <center><img src="images/si2.jpg" alt="..."></center>
       <div class="carousel-caption">
@@ -84,7 +124,51 @@ include('header.php');
     <span class="sr-only">Next</span>
   </a>
 </div>
+ <span id="digitalclock" class="styling"></span>
+
+<script>
+<!--
+
+/*****************************************
+* LCD Clock script- by Javascriptkit.com
+* Featured on/available at http://www.dynamicdrive.com/
+* This notice must stay intact for use
+*****************************************/
+
+var alternate=0
+
+function show(){
+var clockobj=document.getElementById? document.getElementById("digitalclock") : document.all.digitalclock
+var Digital=new Date()
+var hours=Digital.getHours()
+var minutes=Digital.getMinutes()
+var dn="AM"
+
+if (hours==12) dn="PM" 
+if (hours>12){
+dn="PM"
+hours=hours-12
+}
+if (hours==0) hours=12
+if (hours.toString().length==1)
+hours="0"+hours
+if (minutes<=9)
+minutes="0"+minutes
+
+if (alternate==0)
+clockobj.innerHTML=hours+"<font color='lime'> : </font>"+minutes+" "+"<sup>"+dn+"</sup>"
+else
+clockobj.innerHTML=hours+"<font color='black'> : </font>"+minutes+" "+"<sup>"+dn+"</sup>"
+alternate=(alternate==0)? 1 : 0
+setTimeout("show()",1000)
+}
+window.onload=show
+
+//-->
+</script>
+
 </div>
+
 <div class="col-md-3"><br/>
 <?php
 include("database_connect.php");

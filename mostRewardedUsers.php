@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width-device-width, initial-scale=1.0">
- <!-- <tilte><h4>Register Here</h4></tilte>-->
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/ideacss.css" rel="stylesheet">
 </head>
@@ -15,7 +15,7 @@
 <div class="row">
 <div class="col-md-3">
 <ul class="nav nav-pills nav-stacked">
-  <li role="presentation"><a href="index.php">Home</a></li>
+ <li role="presentation"><a href="index.php">Home</a></li>
   <li role="presentation" class="active"><a href="adminPanel.php">Dashboard</a></li>
   <li role="presentation"><a href="adminProfile.php">Profile</a></li>
   <li role="presentation"><a href="editSubmissionCompu.php">Submission</a></li>

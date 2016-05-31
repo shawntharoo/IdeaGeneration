@@ -1,0 +1,13 @@
+<div id="sideviewmenu">
+
+<ul class="menulinks">
+<li><a href="index.php">Home</a></li>
+<li><a href="adminPanel.php">Dashboard</a></li>
+<li><a href="adminProfile.php">Profile</a></li>
+<li><a href="editSubmissionCompu.php">Submission</a></li>
+<li><a href="awardDisplay.php">Reward</a></li>
+<li><a href="Gemification.php">Games</a></li>
+<li><a href="mostRewardedUsers.php">Most Rewarded Users</a></li>
+</ul>
+
+</div>
