@@ -6,6 +6,13 @@
 <link rel="stylesheet" href="css/ideacss.css" />
 <link rel="stylesheet" href="css/bootstrap.min.css"></link>
 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+
+<script type="text/javascript" src="stickytooltip.js">
+</script>
+
+<link rel="stylesheet" type="text/css" href="stickytooltip.css" />
+
 <!-- bootstrap table scripts -->
 <style type="text/css">
 #caption {
@@ -59,11 +66,8 @@ include('header.php');
           
                             <div class="nav">
                                           <ul class = "nav navbar-nav pull-right">
-                                                <li class = "active"><a href = "SearchUser.php">Users</a></li>
-                                                <li class = "active"><a href = "editSubmissionCompu.php">Submission</a></li>
-                                                 <li class = "active"><a href = "newusers.php">New Users</a></li>
-                                                <li class = "active"><a href = "allusers.php">Current User</a></li>
-                                                 
+                                                <li class = "active"><a href = "index.php">Home</a></li>
+                                                <li class = "active"><a href = "adminPanel.php">Dashboard</a></li>   
                                           </ul>
                              </div>
               </div>
@@ -94,7 +98,7 @@ $result=mysqli_query($con,$query);
 <?php while($row=mysqli_fetch_array($result)){ 
   ?>
   <div class="col-xs-6 col-md-3">
-    <div class="thumbnail">
+    <div class="thumbnail" data-tooltip="sticky1">
       <div class="caption">
       <img src="<?php echo $row['img']?>" height="120px" width="115px" align="middle">
         <p>Badge ID : <?php echo $row['id'] ?></p>
@@ -142,7 +146,7 @@ $result=mysqli_query($con,$query);
 <?php while($row=mysqli_fetch_array($result)){ 
   ?>
   <div class="col-xs-6 col-md-3">
-    <div class="thumbnail">
+    <div class="thumbnail" data-tooltip="sticky2">
       <div class="caption">
       <img src="<?php echo $row['img']?>" height="120px" width="115px" align="middle">
         <p>Badge ID : <?php echo $row['id'] ?></p>
@@ -188,7 +192,7 @@ $result=mysqli_query($con,$query);
 <?php while($row=mysqli_fetch_array($result)){ 
   ?>
   <div class="col-xs-6 col-md-3">
-    <div class="thumbnail">
+    <div class="thumbnail" data-tooltip="sticky3">
       <div class="caption">
       <img src="<?php echo $row['img']?>" height="120px" width="115px" align="middle">
         <p>Badge ID : <?php echo $row['id'] ?></p>
@@ -211,6 +215,32 @@ $result=mysqli_query($con,$query);
 
 </div>
 </div>
+
+
+
+<!--HTML for the tooltips-->
+<div id="mystickytooltip" class="stickytooltip">
+<div style="padding:5px">
+
+<div id="sticky1" class="atip" style="width:400px">
+<img src="images/Ta1.png" /><br />
+This is a Reward Given for the Users Who has Posted number of Improvements to the IDEAPOOL
+</div>
+
+<div id="sticky2" class="atip"  style="width:400px">
+<img src="images/Ta2.png" /><br />This is a Reward Given for the Users Who has Exceeded The Desired number of Votes Count
+</div>
+
+<div id="sticky3" class="atip" style="width:400px">
+<img src="images/Ta3.jpg" /><br />This is a Reward Given for the Users Who has Posted number of Submissions to the IDEAPOOL
+</div>
+
+</div>
+
+<div class="stickystatus"></div>
+</div>
+
+
 
 
 </div>

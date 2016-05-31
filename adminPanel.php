@@ -57,13 +57,6 @@ include('header.php');
 
 <h3>View Side Menu </h3><br/>
 <div class="toggler" onClick="sideviewmenu.toggle()"></div>
- <!-- <li role="presentation"><a href="index.php">Home</a></li>
-    <li role="presentation" class="active"><a href="adminPanel.php">Dashboard</a></li>
-  <li role="presentation"><a href="adminProfile.php">Profile</a></li>
-  <li role="presentation"><a href="editSubmissionCompu.php">Submission</a></li>
-  <li role="presentation"><a href="awardDisplay.php">Reward</a></li>
-  <li role="presentation"><a href="Gemification.php">Games</a></li>
-  <li role="presentation"><a href="mostRewardedUsers.php">Most Rewarded Users</a></li>-->
 </ul>
 </div>
 

@@ -36,39 +36,16 @@
  
 <!--start of navigation bar -->
 
-
-<nav class = "navbar navbar-inverse" role = "navigation">
-   
-           <div class = "navbar-header" style="font-size:20px">
-              <a class = "navbar-brand" href = "#">Admin Page</a>
-           </div>
-           
-           <div style="font-size:20px">
-          
-                            <div class="nav">
-                                          <ul class = "nav navbar-nav pull-right">
-                                                <li class = "active"><a href = "SearchUser.php">Users</a></li>
-                                                <li class = "active"><a href = "editSubmissionCompu.php">Submission</a></li>
-                                                 <li class = "active"><a href = "newusers.php">New Users</a></li>
-                                                <li class = "active"><a href = "allusers.php">Current User</a></li>
-                                                 
-                                          </ul>
-                             </div>
-              </div>
-
-</nav>
-
-
  <div class="container">
 <div class="col-md-3"><br/>
  <ul class="nav nav-pills nav-stacked">
-  <li role="presentation"><a href="index.php">Home</a></li>
-    <li role="presentation"><a href="adminPanel.php">Dashboard</a></li>
-  <li role="presentation" class="active"><a href="adminProfile.php" >Profile</a></li>
+   <li role="presentation"><a href="index.php">Home</a></li>
+  <li role="presentation" class="active"><a href="adminPanel.php">Dashboard</a></li>
+  <li role="presentation"><a href="adminProfile.php">Profile</a></li>
   <li role="presentation"><a href="editSubmissionCompu.php">Submission</a></li>
   <li role="presentation"><a href="awardDisplay.php">Reward</a></li>
-
-
+  <li role="presentation"><a href="Gemification.php">Games</a></li>
+  <li role="presentation"><a href="mostRewardedUsers.php">Most Rewarded Users</a></li>
 </ul>
 </div>
  <div class="col-md-1">

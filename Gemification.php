@@ -26,6 +26,24 @@
 include('header.php');
 ?>
 
+ <nav class = "navbar navbar-inverse" role = "navigation">
+   
+           <div class = "navbar-header" style="font-size:20px">
+              <a class = "navbar-brand" href = "adminPanel.php">Admin Panel</a>
+           </div>
+           
+           <div style="font-size:20px">
+          
+                            <div class="nav">
+                                          <ul class = "nav navbar-nav pull-right">
+                                                <li class = "active"><a href = "index.php">Home</a></li>
+                                                <li class = "active"><a href = "adminPanel.php">Dashboard</a></li>   
+                                          </ul>
+                             </div>
+              </div>
+
+</nav>
+
 <?php
 include("database_connect.php");
 
