@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2016 at 05:28 PM
+-- Generation Time: Jun 05, 2016 at 07:00 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -335,6 +335,25 @@ INSERT INTO `reward` (`id`, `name`, `level`, `img`, `postcount`, `type`, `descri
 (3, 'timesaver', 3, 'images/reward3.png', 50, 'submission', 'time saver'),
 (5, 'activevoter', 1, 'images/reward4.png', 5, 'vote', ''),
 (6, 'improver', 1, 'images/reward7.png', 3, 'improvement', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rewardgame`
+--
+
+CREATE TABLE IF NOT EXISTS `rewardgame` (
+  `gId` int(11) NOT NULL AUTO_INCREMENT,
+  `game` varchar(60) NOT NULL,
+  PRIMARY KEY (`gId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `rewardgame`
+--
+
+INSERT INTO `rewardgame` (`gId`, `game`) VALUES
+(1, 'games/curethezombies_e.swf');
 
 -- --------------------------------------------------------
 

@@ -53,6 +53,14 @@ echo "failed to connect to MySQL.".mysqli_connect_error();
 ?>
 
 <div class="container">
+<form name="form1"  method="POST" action="addGamePage.php" enctype="multipart/form-data">
+  <div class="form-group">
+  <label for="game">Add New Game</label>
+  <input type="file" name="input" id="g"/>
+  </div>
+  <button type="submit" class="btn btn-primary" name="btn-signup" value="submit">Upload Game</button>
+  </form>
+
 <h3>Available games In the WebSite </h3><br/>
 <div class="row">
 <div class="col-md-3">
