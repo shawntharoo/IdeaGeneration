@@ -1,7 +1,11 @@
- <div style="width: 220px;margin:none">
-                    <h2>MY ACHEIVEMENTS</h2>
-                      <p>SUBMISSIONS</p>
-                    <?php
+  <div style=" color:#FFF;background-color: #009900;width:240px;margin-top:10px;">
+   
+               <a class="btn btn-info" style="background-color: #009900; width:100%;" > MY ACHEIVEMENTS </a>
+                  
+              <table style=" color:#FFF;background-color: #009900; padding:10px;">
+                  <tr ><td style="padding:10px;padding-bottom:5px;"> SUBMISSIONS</td> <tr>
+                 <tr><td> <div style="padding:8px; align:center;"> 
+                   <?php
                        include("database_connect.php");
                         $sql5="SELECT * from register where id=$userNo";
             
@@ -116,10 +120,11 @@
                      <?php
                       }
                      ?>
-                     </div>
- <div style="width: 220px;margin:none">
-          <p>VOTES</p>
-                    <?php
+                     </div>   </td></tr>
+          <tr > <td style="padding:10px;padding-bottom:5px;"> 
+          VOTES</td></tr>
+                <tr><td>  <div style="padding:10px;align:center;">
+                  <?php
                     
                             
                           $sql7="select img,name from reward where level='$reward2' and type='vote'";
@@ -142,9 +147,10 @@
                     
 
                      <img src=<?= $rewardimg2 ?> width="35" height="30" data-toggle="tooltip" data-placement="bottom" title=<?=$title2?> />
-                    </div>
-    <div style="width: 220px;margin:none">
-     <p>IMPROVEMENTS</p>
+                    </div> </td></tr>
+    <tr ><td style="padding:10px;padding-bottom:5px;">
+     IMPROVEMENTS </td> </tr>
+           <tr><td> <div style="padding:10px; align:center;">
                       <?php
 
                      }
@@ -178,4 +184,7 @@
 
                      }
                     ?>
-                 </div>
+                 </div> </td></tr>
+               </table>
+
+             </div>

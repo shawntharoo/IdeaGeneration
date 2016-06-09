@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 05, 2016 at 07:00 AM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Host: localhost
+-- Generation Time: Jun 09, 2016 at 05:01 AM
+-- Server version: 5.6.12-log
+-- PHP Version: 5.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `ideapool`
 --
+CREATE DATABASE IF NOT EXISTS `ideapool` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `ideapool`;
 
 -- --------------------------------------------------------
 
@@ -58,6 +60,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `date` datetime NOT NULL,
   `views` int(11) NOT NULL,
   `commentType` varchar(50) NOT NULL,
+  `monthOf` int(11) NOT NULL DEFAULT '6',
   PRIMARY KEY (`commentId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -65,26 +68,30 @@ CREATE TABLE IF NOT EXISTS `comment` (
 -- Dumping data for table `comment`
 --
 
-INSERT INTO `comment` (`commentId`, `submissionId`, `userId`, `description`, `date`, `views`, `commentType`) VALUES
-('C_1', 'SUB_1', 1, 'True. ', '2016-04-21 16:13:55', 0, 'Comment'),
-('C_10', 'SUB_1', 28, 'i agree', '2016-04-22 13:01:38', 0, 'Comment'),
-('C_11', 'SUB_10', 25, 'hmm', '2016-04-30 17:34:10', 0, 'Comment'),
-('C_12', 'SUB_6', 25, 'helloo', '2016-05-16 14:47:21', 0, 'Improvement'),
-('C_13', 'SUB_9', 28, 'add this', '2016-05-17 01:13:03', 0, 'Improvement'),
-('C_14', 'SUB_9', 25, 'dfdf', '2016-05-17 13:02:33', 0, 'Comment'),
-('C_15', 'SUB_9', 25, 'mkm', '2016-05-17 13:10:06', 0, 'Comment'),
-('C_16', 'SUB_8', 1, 'jjhjhhj', '2016-05-17 14:21:02', 0, 'Improvement'),
-('C_17', 'SUB_9', 1, 'uguu', '2016-05-17 14:24:45', 0, 'Comment'),
-('C_18', 'SUB_9', 1, 'jjjj', '2016-05-17 14:24:57', 0, 'Comment'),
-('C_19', 'SUB_9', 1, 'good', '2016-05-17 14:36:03', 0, 'Comment'),
-('C_2', 'SUB_6', 28, 'If we could suggest a reading room in the room on the 7th floor.', '2016-04-21 16:28:09', 0, 'Improvement'),
-('C_3', 'SUB_6', 1, 'good idea', '2016-04-21 16:33:21', 0, 'Comment'),
-('C_4', 'SUB_6', 28, 'yes yes', '2016-04-21 16:37:26', 0, 'Comment'),
-('C_5', 'SUB_6', 3, 'i agree', '2016-04-21 16:40:51', 0, 'Comment'),
-('C_6', 'SUB_7', 3, 'i suggest online module documents and assignments for english language.', '2016-04-21 16:42:00', 0, 'Improvement'),
-('C_7', 'SUB_8', 3, 'many books from the library are already borrowed', '2016-04-21 16:42:39', 0, 'Comment'),
-('C_8', 'SUB_1', 3, 'good thing we dont come in vehicles', '2016-04-21 16:43:05', 0, 'Comment'),
-('C_9', 'SUB_1', 28, 'true', '2016-04-22 12:52:04', 0, 'Improvement');
+INSERT INTO `comment` (`commentId`, `submissionId`, `userId`, `description`, `date`, `views`, `commentType`, `monthOf`) VALUES
+('C_1', 'SUB_1', 1, 'True. ', '2016-04-21 16:13:55', 0, 'Comment', 0),
+('C_10', 'SUB_1', 28, 'i agree', '2016-04-22 13:01:38', 0, 'Comment', 0),
+('C_11', 'SUB_10', 25, 'hmm', '2016-04-30 17:34:10', 0, 'Comment', 0),
+('C_12', 'SUB_6', 25, 'helloo', '2016-05-16 14:47:21', 0, 'Improvement', 0),
+('C_13', 'SUB_9', 28, 'add this', '2016-05-17 01:13:03', 0, 'Improvement', 0),
+('C_14', 'SUB_9', 25, 'dfdf', '2016-05-17 13:02:33', 0, 'Comment', 0),
+('C_15', 'SUB_9', 25, 'mkm', '2016-05-17 13:10:06', 0, 'Comment', 0),
+('C_16', 'SUB_8', 1, 'jjhjhhj', '2016-05-17 14:21:02', 0, 'Improvement', 0),
+('C_17', 'SUB_9', 1, 'uguu', '2016-05-17 14:24:45', 0, 'Comment', 0),
+('C_18', 'SUB_9', 1, 'jjjj', '2016-05-17 14:24:57', 0, 'Comment', 0),
+('C_19', 'SUB_9', 1, 'good', '2016-05-17 14:36:03', 0, 'Comment', 0),
+('C_2', 'SUB_6', 28, 'If we could suggest a reading room in the room on the 7th floor.', '2016-04-21 16:28:09', 0, 'Improvement', 0),
+('C_20', 'SUB_14', 1, 'good', '2016-06-08 19:19:51', 0, 'Comment', 6),
+('C_21', 'SUB_14', 1, 'fair', '2016-06-08 19:20:21', 0, 'Comment', 6),
+('C_22', 'SUB_8', 28, 'Yes can we request for ebooks. That will be much easier', '2016-06-09 08:46:48', 0, 'Improvement', 6),
+('C_23', 'SUB_8', 1, 'good', '2016-06-09 09:12:54', 0, 'Comment', 6),
+('C_3', 'SUB_6', 1, 'good idea', '2016-04-21 16:33:21', 0, 'Comment', 0),
+('C_4', 'SUB_6', 28, 'yes yes', '2016-04-21 16:37:26', 0, 'Comment', 0),
+('C_5', 'SUB_6', 3, 'i agree', '2016-04-21 16:40:51', 0, 'Comment', 0),
+('C_6', 'SUB_7', 3, 'i suggest online module documents and assignments for english language.', '2016-04-21 16:42:00', 0, 'Improvement', 0),
+('C_7', 'SUB_8', 3, 'many books from the library are already borrowed', '2016-04-21 16:42:39', 0, 'Comment', 0),
+('C_8', 'SUB_1', 3, 'good thing we dont come in vehicles', '2016-04-21 16:43:05', 0, 'Comment', 0),
+('C_9', 'SUB_1', 28, 'true', '2016-04-22 12:52:04', 0, 'Improvement', 0);
 
 -- --------------------------------------------------------
 
@@ -153,9 +160,9 @@ CREATE TABLE IF NOT EXISTS `games` (
 --
 
 INSERT INTO `games` (`ID`, `Availability`) VALUES
-(1, 0),
+(1, 1),
 (2, 0),
-(3, 0),
+(3, 1),
 (4, 0),
 (5, 0),
 (6, 0);
@@ -245,6 +252,7 @@ CREATE TABLE IF NOT EXISTS `post` (
   `views` int(100) NOT NULL DEFAULT '0',
   `date` date NOT NULL DEFAULT '2016-04-14',
   `files` varchar(100) NOT NULL,
+  `monthOf` int(11) NOT NULL,
   PRIMARY KEY (`postId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -252,17 +260,20 @@ CREATE TABLE IF NOT EXISTS `post` (
 -- Dumping data for table `post`
 --
 
-INSERT INTO `post` (`postId`, `userId`, `dateTime`, `faculty`, `department`, `category`, `title`, `content`, `views`, `date`, `files`) VALUES
-('SUB_1', 28, '2016-04-21 16:06:55', 'Faculty of Computing', 'Department of Software Engineering', 'External', 'The car park should be extended', 'There is no space in the car park in the morning to park vehicles since the upper park is also reserved for guests.', 0, '2016-04-21', 'images/10995146_1618831068353288_175800297_n.jpg'),
-('SUB_2', 28, '2016-04-21 16:09:44', 'Faculty of Engineering', 'Department of Electrical Engineering', 'Academic', 'Provide experiment labs for electrical engineering', 'Unable to perform experiments which is a huge part of our degree.', 0, '2016-04-21', 'images/boys1.png'),
-('SUB_3', 28, '2016-04-21 16:10:46', 'Faculty of Engineering', 'Department of Civil Engineering', 'Academic', 'No appliances to do practicals', 'All appliances are not in good condition', 0, '2016-04-21', 'images/'),
-('SUB_4', 28, '2016-04-21 16:12:05', 'Faculty of Management', 'Department of Bussiness', 'Sports and Societies', 'Requirement of a business club', 'Business students need to interact more often and share knowledge about their business backgrounds via a business club.', 0, '2016-04-21', 'images/'),
-('SUB_5', 28, '2016-04-21 16:13:10', 'Faculty of Engineering', 'Department of Electrical Engineering', 'External', 'There is no space in the canteen for all the students.', 'At the interval hour the canteen fills with student their is no space for all the students to fit in.', 0, '2016-04-21', 'images/'),
-('SUB_6', 1, '2016-04-21 16:17:59', 'Faculty of Computing', 'Department of Software Engineering', 'Academic', 'No space for the students to study', 'There is no space in any of the reading rooms for studying purposes due to the large amount of students. I request for a new reading room.', 0, '2016-04-21', 'images/'),
-('SUB_7', 1, '2016-04-21 16:19:12', 'Faculty of Computing', 'Department of Software Engineering', 'Academic', 'English subject should be brought back to all four years', 'Most of the students struggle with english and business english. We need help', 2, '2016-04-21', 'images/The-ground-floor-of-the-proposed-new-Town-House-building-at-Kingston-University-London.jpg'),
-('SUB_8', 1, '2016-04-21 16:20:55', 'Faculty of Computing', 'Department of Software Engineering', 'Academic', 'No textbooks for this semester - 3rd year IT student', 'Reference books are also not available in the library. Lack of books for reference.', 2, '2016-04-21', 'images/'),
-('SUB_10', 28, '2016-04-22 12:39:00', 'Faculty of Computing', 'Department of Software Engineering', 'Student Affairs', 'The managers are not very supportive', 'The managers are not very supportive', 0, '2016-04-22', 'images/'),
-('SUB_12', 38, '2016-04-22 15:33:17', 'Faculty of Management', 'Department of Bussiness', 'Academic', 'this is test', 'fghmgjgjj,,hg', 0, '2016-04-22', 'images/1EMAim3uSfm29w35E23g_ldaYK5wTq6GjoEcXZfvg_pizza.jpg');
+INSERT INTO `post` (`postId`, `userId`, `dateTime`, `faculty`, `department`, `category`, `title`, `content`, `views`, `date`, `files`, `monthOf`) VALUES
+('SUB_1', 28, '2016-04-21 16:06:55', 'Faculty of Computing', 'Department of Software Engineering', 'External', 'The car park should be extended', 'There is no space in the car park in the morning to park vehicles since the upper park is also reserved for guests.', 1, '2016-04-21', 'images/10995146_1618831068353288_175800297_n.jpg', 0),
+('SUB_2', 28, '2016-04-21 16:09:44', 'Faculty of Engineering', 'Department of Electrical Engineering', 'Academic', 'Provide experiment labs for electrical engineering', 'Unable to perform experiments which is a huge part of our degree.', 0, '2016-04-21', 'images/boys1.png', 0),
+('SUB_3', 28, '2016-04-21 16:10:46', 'Faculty of Engineering', 'Department of Civil Engineering', 'Academic', 'No appliances to do practicals', 'All appliances are not in good condition', 0, '2016-04-21', 'images/', 0),
+('SUB_4', 28, '2016-04-21 16:12:05', 'Faculty of Management', 'Department of Bussiness', 'Sports and Societies', 'Requirement of a business club', 'Business students need to interact more often and share knowledge about their business backgrounds via a business club.', 0, '2016-04-21', 'images/', 0),
+('SUB_5', 28, '2016-04-21 16:13:10', 'Faculty of Engineering', 'Department of Electrical Engineering', 'External', 'There is no space in the canteen for all the students.', 'At the interval hour the canteen fills with student their is no space for all the students to fit in.', 0, '2016-04-21', 'images/', 0),
+('SUB_6', 1, '2016-04-21 16:17:59', 'Faculty of Computing', 'Department of Software Engineering', 'Academic', 'No space for the students to study', 'There is no space in any of the reading rooms for studying purposes due to the large amount of students. I request for a new reading room.', 6, '2016-04-21', 'images/', 0),
+('SUB_7', 1, '2016-04-21 16:19:12', 'Faculty of Computing', 'Department of Software Engineering', 'Academic', 'English subject should be brought back to all four years', 'Most of the students struggle with english and business english. We need help', 11, '2016-04-21', 'images/The-ground-floor-of-the-proposed-new-Town-House-building-at-Kingston-University-London.jpg', 0),
+('SUB_8', 1, '2016-04-21 16:20:55', 'Faculty of Computing', 'Department of Software Engineering', 'Academic', 'No textbooks for this semester - 3rd year IT student', 'Reference books are also not available in the library. Lack of books for reference.', 30, '2016-04-21', 'images/', 0),
+('SUB_13', 1, '2016-06-04 19:12:58', 'Faculty of Computing', 'Department of Software Engineering', 'Sports and Societies', 'testtttttttttttt', 'test test test test', 2, '2016-06-04', 'images/', 0),
+('SUB_10', 28, '2016-04-22 12:39:00', 'Faculty of Computing', 'Department of Software Engineering', 'Student Affairs', 'The managers are not very supportive', 'The managers are not very supportive', 1, '2016-04-22', 'images/', 0),
+('SUB_12', 38, '2016-04-22 15:33:17', 'Faculty of Management', 'Department of Bussiness', 'Academic', 'this is test', 'fghmgjgjj,,hg', 0, '2016-04-22', 'images/1EMAim3uSfm29w35E23g_ldaYK5wTq6GjoEcXZfvg_pizza.jpg', 0),
+('SUB_14', 1, '2016-06-08 18:15:15', 'Faculty of Computing', 'Department of Software Engineering', 'Academic', 'this is a test', 'test submission test1 2 3', 7, '2016-06-08', 'images/', 0),
+('SUB_15', 1, '2016-06-08 19:21:36', 'Faculty of Management', 'Department of Software Engineering', 'Academic', 'gyudguyivsuioubsituzsio', 't6rvtsubtruvuiawi btrtavwttestybutuesbytrtuytyu ', 0, '2016-06-08', 'images/rsz_5_lamborghini_gallardo_car_wallpaper.jpg', 6);
 
 -- --------------------------------------------------------
 
@@ -287,6 +298,7 @@ CREATE TABLE IF NOT EXISTS `register` (
   `reward` int(10) NOT NULL DEFAULT '0',
   `reward2` int(10) NOT NULL DEFAULT '0',
   `reward3` int(10) NOT NULL DEFAULT '0',
+  `rewardcount` int(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
@@ -294,19 +306,19 @@ CREATE TABLE IF NOT EXISTS `register` (
 -- Dumping data for table `register`
 --
 
-INSERT INTO `register` (`id`, `fname`, `lname`, `address`, `contact`, `gender`, `emil`, `category`, `universityID`, `Image`, `status`, `username`, `password`, `reward`, `reward2`, `reward3`) VALUES
-(1, 'Pawan', 'Gamage', 'Galle', 714020523, 'male', 'pawan@gmail.com', 'Student', '18889006', 'images/boy1.png', 'active', 'pawan', 'pdm', 3, 1, 1),
-(2, 'Sandakelum', 'Adikaram', 'Colombo', 776778987, 'male', 'sanda@gmail.com', 'Lecturer', '16778904', 'images/boy2.png', 'active', 'sanda', 'pdm', 0, 0, 0),
-(3, 'Chathra', 'Senevirathne', 'Gampaha', 771231212, 'female', 'chathra@gmail.com', 'Lecturer', '18887899', 'images/girl1.png', 'active', 'chathra', 'pdm', 0, 1, 0),
-(14, 'Kasun', 'Kodithuwakku', 'Tangalle', 773444555, 'male', 'kasun@gmail.com', 'staff', '18886677', 'images/boy4.png', 'blocked', '', 'ewmw928273', 0, 0, 0),
-(15, 'Panchali', 'Abheywardhana', 'Kandy', 773234445, 'female', 'panchali@gmail.com', 'Student', '18886787', 'images/girl2.png', 'active', 'panchali', 'pdm', 0, 0, 0),
-(16, 'robert', 'fernando', 'new york', 981235674, 'male', 'robert@gmail.com', 'Lecturere', '18765678', 'images/boy1.png', 'pending', 'robert@gmail.com', '', 0, 0, 0),
-(24, 'saman', 'kumara', 'jaffna batticloe', 987654321, 'female', 'sana@gmail.com', 'Lecturere', '123456789', 'images/boy2.png', 'pending', 'sana@gmail.com', '', 0, 0, 0),
-(25, 'Diluni', 'Amarasekara', 'Matara', 776878987, 'female', 'diluni@gmail.com', 'Operator', '18238849', 'images/girl4.png', 'active', 'diluni', 'pdm', 1, 0, 0),
-(27, 'Sandun', 'Adikarams', '167/1A,Makola,South', 987654321, 'male', 'dikaram@gmail.com', 'Lecturere', '18765678', 'images/boy1.png', 'pending', 'dikaram@gmail.com', '', 1, 0, 0),
-(28, 'Harshani', 'Yik', 'Kegalle', 77655678, 'female', 'harshani@gmail.com', 'Student', '18889005', 'images/girl3.png', 'active', 'harshani', 'pdm', 1, 0, 1),
-(36, 'saman', 'gamage', 'colombo', 714325678, 'male', 'hdfh@gmail.com', 'Student', '18768909', 'images/boy4.png', 'pending', 'hdfh@gmail.com', '', 3, 0, 0),
-(38, 'Diluni', 'Abewardhana', 'Colombo 7, weatern province', 768965432, 'male', 'diluni@g', 'Student', 'diluni', 'images/girl3.png', 'active', 'diluni@g', 'pdm', 1, 0, 0);
+INSERT INTO `register` (`id`, `fname`, `lname`, `address`, `contact`, `gender`, `emil`, `category`, `universityID`, `Image`, `status`, `username`, `password`, `reward`, `reward2`, `reward3`, `rewardcount`) VALUES
+(1, 'Pawan', 'Gamage', 'Galle', 714020523, 'male', 'pawan@gmail.com', 'Student', '18889006', 'images/boy1.png', 'active', 'pawan@gmail.com', 'pdm', 1, 0, 0, 1),
+(2, 'Sandakelum', 'Adikaram', 'Colombo', 776778987, 'male', 'sanda@gmail.com', 'Lecturer', '16778904', 'images/boy2.png', 'active', 'sanda', 'pdm', 0, 0, 0, 0),
+(3, 'Chathra', 'Senevirathne', 'Gampaha', 771231212, 'female', 'chathra@gmail.com', 'Lecturer', '18887899', 'images/girl1.png', 'active', 'chathra', 'pdm', 0, 1, 0, 1),
+(14, 'Kasun', 'Kodithuwakku', 'Tangalle', 773444555, 'male', 'kasun@gmail.com', 'staff', '18886677', 'images/boy4.png', 'blocked', '', 'ewmw928273', 0, 0, 0, 0),
+(15, 'Panchali', 'Abheywardhana', 'Kandy', 773234445, 'female', 'panchali@gmail.com', 'Student', '18886787', 'images/girl2.png', 'active', 'panchali', 'pdm', 0, 0, 0, 0),
+(16, 'robert', 'fernando', 'new york', 981235674, 'male', 'robert@gmail.com', 'Lecturere', '18765678', 'images/boy1.png', 'pending', 'robert@gmail.com', '', 0, 0, 0, 0),
+(24, 'saman', 'kumara', 'jaffna batticloe', 987654321, 'female', 'sana@gmail.com', 'Lecturere', '123456789', 'images/boy2.png', 'pending', 'sana@gmail.com', '', 0, 0, 0, 0),
+(25, 'Diluni', 'Amarasekara', 'Matara', 776878987, 'female', 'diluni@gmail.com', 'Operator', '18238849', 'images/girl4.png', 'active', 'diluni@gmail.com', 'pdm', 1, 0, 0, 1),
+(27, 'Sandun', 'Adikarams', '167/1A,Makola,South', 987654321, 'male', 'dikaram@gmail.com', 'Lecturere', '18765678', 'images/boy1.png', 'pending', 'dikaram@gmail.com', '', 1, 0, 0, 1),
+(28, 'Harshani', 'Yik', 'Kegalle', 77655678, 'female', 'harshani@gmail.com', 'Student', '18889005', 'images/girl3.png', 'active', 'harshani', 'pdm', 1, 0, 1, 2),
+(36, 'saman', 'gamage', 'colombo', 714325678, 'male', 'hdfh@gmail.com', 'Student', '18768909', 'images/boy4.png', 'pending', 'hdfh@gmail.com', '', 3, 0, 0, 3),
+(38, 'Diluni', 'Abewardhana', 'Colombo 7, weatern province', 768965432, 'male', 'diluni@g', 'Student', 'diluni', 'images/girl3.png', 'active', 'diluni@g', 'pdm', 1, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -330,30 +342,11 @@ CREATE TABLE IF NOT EXISTS `reward` (
 --
 
 INSERT INTO `reward` (`id`, `name`, `level`, `img`, `postcount`, `type`, `description`) VALUES
-(1, 'ideamaster', 1, 'images/reward1.png', 7, 'submission', ''),
+(1, 'ideamaster', 1, 'images/reward1.png', 5, 'submission', 'ideamaster'),
 (2, 'socialhelper', 2, 'images/reward2.png', 20, 'submission', ''),
-(3, 'timesaver', 3, 'images/reward3.png', 50, 'submission', 'time saver'),
-(5, 'activevoter', 1, 'images/reward4.png', 5, 'vote', ''),
-(6, 'improver', 1, 'images/reward7.png', 3, 'improvement', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rewardgame`
---
-
-CREATE TABLE IF NOT EXISTS `rewardgame` (
-  `gId` int(11) NOT NULL AUTO_INCREMENT,
-  `game` varchar(60) NOT NULL,
-  PRIMARY KEY (`gId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `rewardgame`
---
-
-INSERT INTO `rewardgame` (`gId`, `game`) VALUES
-(1, 'games/curethezombies_e.swf');
+(3, 'timesaver', 3, 'images/reward3.png', 50, 'submission', 'timesaver'),
+(5, 'activevoter', 1, 'images/reward4.png', 5, 'vote', 'activevoter'),
+(6, 'improver', 1, 'images/reward7.png', 3, 'improvement', 'improver');
 
 -- --------------------------------------------------------
 
@@ -422,6 +415,12 @@ INSERT INTO `votes` (`voteId`, `voteType`, `voteCategory`, `userId`, `submission
 ('V_47', 'Downvote', 'Accuracy', 25, 'SUB_9', '', 'Submission', '2016-05-17 13:58:05', 41),
 ('V_48', 'Upvote', 'Feasibility', 25, 'SUB_9', '', 'Submission', '2016-05-17 13:58:05', 86),
 ('V_49', 'Upvote', 'Timeliness', 25, 'SUB_9', '', 'Submission', '2016-05-17 13:58:05', 75),
+('V_50', 'Downvote', 'Accuracy', 1, '', 'C_16', 'Improvement', '2016-06-08 17:27:08', 34),
+('V_51', 'Upvote', 'Feasibility', 1, '', 'C_16', 'Improvement', '2016-06-08 17:27:08', 59),
+('V_52', 'Upvote', 'Timeliness', 1, '', 'C_16', 'Improvement', '2016-06-08 17:27:08', 50),
+('V_53', 'Downvote', 'Accuracy', 1, 'SUB_8', '', 'Submission', '2016-06-08 17:54:33', 46),
+('V_54', 'Upvote', 'Feasibility', 1, 'SUB_8', '', 'Submission', '2016-06-08 17:54:33', 75),
+('V_55', 'Upvote', 'Timeliness', 1, 'SUB_8', '', 'Submission', '2016-06-08 17:54:33', 63),
 ('V_6', 'Upvote', '', 3, 'SUB_6', '', 'Submission', '2016-04-21 16:40:45', 96),
 ('V_7', 'Upvote', '', 3, 'SUB_7', '', 'Submission', '2016-04-21 16:41:01', 13),
 ('V_8', 'Upvote', '', 3, 'SUB_8', '', 'Submission', '2016-04-21 16:42:13', 94),

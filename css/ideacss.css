@@ -492,3 +492,109 @@ color: white;
 	margin:5px;
 	padding:2px;
 }
+.leaderboard_row
+{
+ background-color: white;
+ padding: 1em;
+
+}
+.boardblock
+{
+
+border:1px  solid  black;
+margin-top:20px;
+
+}
+.boardcolomn
+{
+margin-top: 4px;
+margin-left: 20px;
+padding: 1.5em;
+
+}
+.scoreimage{ 
+   background-image:url(../images/scoreboard2.jpg);
+   z-index: 100000;
+   width: 120px;
+   height: 120px;
+}
+.games
+{
+
+color: white;
+
+}
+.game_body
+{
+background-image:url(../images/gamebg.png);
+text-align:center;
+}
+
+.IT
+{
+background-image:url(../images/buildingIT1.png);
+background-size: 280px 800px;
+background-repeat: no-repeat;
+text-align:center;
+}
+
+.EN
+{
+background-image:url(../images/buildingEN1.png);
+background-size: 300px 600px;
+background-repeat: no-repeat;
+text-align:center;
+}
+
+.BM
+{
+background-image:url(../images/buildingBM1.png);
+background-size: 310px 400px;
+background-repeat: no-repeat;
+text-align:center;
+}
+.BMlevel1
+{
+background-image:url(../images/BMlevel1.png);
+background-size: 310px 400px;
+background-repeat: no-repeat;
+text-align:center;
+}
+.BMlevel2
+{
+background-image:url(../images/BMlevel2.png);
+background-size: 310px 400px;
+background-repeat: no-repeat;
+text-align:center;
+width: 500px;
+height: 300px;
+}
+
+.BMlevel3
+{
+background-image:url(../images/BMlevel3.png);
+background-size: 310px 400px;
+background-repeat: no-repeat;
+text-align:center;
+}
+
+.BMlevel4
+{
+background-image:url(../images/BMlevel4.png);
+background-size: 510px 600px;
+background-repeat: no-repeat;
+text-align:center;
+}
+
+a.disabled {
+   pointer-events: none;
+   cursor: default;
+
+}
+
+.disabledbutton {
+    pointer-events: none;
+    opacity: 0.4;
+    cursor: default;
+}
+

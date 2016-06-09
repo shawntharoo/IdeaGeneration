@@ -120,7 +120,13 @@ include('header.php');
  <span id="digitalclock" class="styling"></span>
 
 <script>
+<!--
 
+/*****************************************
+* LCD Clock script- by Javascriptkit.com
+* Featured on/available at http://www.dynamicdrive.com/
+* This notice must stay intact for use
+*****************************************/
 
 var alternate=0
 

@@ -410,7 +410,7 @@ if($row222['category']=='Operator'){
                                                                                while($row=mysqli_fetch_array($result)){?>
 
                                                                                   <div class="thumbnail" style="min-width: 800px">
-                                                                                                <a href="viewidea.php?id=<?=$row["postId"]?>"><h2 style="padding-top: -10px;padding-left: 7px;color: black"><strong><?php echo $row['title'];?></strong></h2></a>
+                                                                                                <a href="viewidea.php?id=<?=$row["postId"]?>&comt=0"><h2 style="padding-top: -10px;padding-left: 7px;color: black"><strong><?php echo $row['title'];?></strong></h2></a>
 
                                                                                                  <!--Submission edit and delete links-->                                                                   
                         <div style="margin-left: 700px;margin-bottom:8px;"> 

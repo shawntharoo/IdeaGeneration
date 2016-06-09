@@ -389,7 +389,7 @@
            </div>
            <div class="col-md-6 middlecolomn">
                <div class="row title">
-               <h4><a href="viewidea.php?id=<?=$row["postId"]?>"><?= $row["title"]?></a></h4>
+               <h4><a href="viewidea.php?comt=0&id=<?=$row["postId"]?>"><?= $row["title"]?></a></h4>
                </div>
                <div class="row content">
                <p> <?php echo $row["content"]; ?></p>

@@ -35,28 +35,7 @@
                              <li><a href="external.php">External</a></li> 
                             </ul>
                         </li>
-                           <li class="dropdown">
-                           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Faculty of Engineering
-                            <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                              <li><a href="#">Academic</a></li>
-                             <li><a href="#">Student Affairs</a></li>
-                             <li><a href="#">Sports and Societies</a></li>
-                             
-                             <li><a href="#">External</a></li>  
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Faculty of Business Management
-                            <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                               <li><a href="#">Academic</a></li>
-                             <li><a href="#">Student Affairs</a></li>
-                             <li><a href="#">Sports and Societies</a></li>
-                             
-                             <li><a href="#">External</a></li>  
-                            </ul>
-                        </li>
+                       
                         
                      </ul>
                 </div>

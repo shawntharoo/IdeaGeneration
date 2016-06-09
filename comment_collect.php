@@ -25,9 +25,9 @@
 	
 	if ($isComment == 0)
 	{
-		
+		$currentMonth=date("m");
 		//That means this is a comment. Therefore add to the comment table
-		$sqlInsertComment = "INSERT INTO comment(commentId,submissionId,userId,description,date,commentType) VALUES('$commentId','$submissionId','$userId','$description','$dateValue','Comment')";
+		$sqlInsertComment = "INSERT INTO comment(commentId,submissionId,userId,description,date,commentType,monthOf) VALUES('$commentId','$submissionId','$userId','$description','$dateValue','Comment', '$currentMonth')";
 		if(mysqli_query($con,$sqlInsertComment))
 		{
 			

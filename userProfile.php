@@ -134,10 +134,10 @@ if($row222['category']=='Operator'){
 
 <!-- Search key-->
 
-<div id ="tcontent" style="padding-bottom:20px;padding-left:150px;padding-right:50px;border:">
+<div class="container" id ="tcontent" style="padding-bottom:20px;padding-left:20px;padding-right:20px; margin-left:10px;margin-right:10px;">
 
-
-		                <div id="leftcontent" align="left" style="margin:15px;width:250px;padding-right:5px;" >
+                  <div class="row">
+		                <div class="col-md-3" id="leftcontent"  style="margin:15px;padding-right:10px;" >
  			                                                                          <!--profile pic and two links-->
    
     																			                                     <?php
@@ -150,7 +150,7 @@ if($row222['category']=='Operator'){
                                                                                   
                                                                                
                                                                                 while($row=mysqli_fetch_array($result)){?>
-                                                                                 <img src="<?php echo $row['Image']; ?>" class="img-circle person" alt="profile-sample5" style="padding-left: 20px"/>
+                                                                                 <img src="<?php echo $row['Image']; ?>" class="img-circle person" alt="profile-sample5" style="padding-left: 20px; align:center;"/>
     
                                                                                 <?php }?>
                                              																				 <p> </p>
@@ -158,32 +158,35 @@ if($row222['category']=='Operator'){
 
                                                                                     
                                                                                   <div class="col-3">
-                                                                                           <a href="#Profile" class="btn btn-info" role="button" style="width:200px;background-color: #1aff1a">Profile</a>
-                                                                                         <a href="userProfile_post.php?id=<?=$Id?>" class="btn btn-info" role="button" style="width:200px;background-color: #009900">Post</a>
-                                                                                         
+                                                                                           <a href="#Profile" class="btn btn-info" role="button" style="width:240px;background-color: #1aff1a">Profile</a>
+                                                                                           <a href="userProfile_post.php?id=<?=$Id?>" class="btn btn-info" role="button" style="width:240px;background-color: #009900">Post</a>
+                                                                                           <a href="gameHome.php" class="btn btn-info" role="button" style="width:240px;background-color: #009900">My Games</a>
+                                                                                            <a href="leaderboard.php" class="btn btn-info" role="button" style="width:240px;background-color: #009900">Leader Board</a>
+                                                                                            <a href="userHistory.php?id=" class="btn btn-info" role="button" style="width:240px;background-color: #009900">History</a>
+
                                                                                   </div>
                           
-  </div>
+               
 
       
-                    <div id="countpro" style="padding-top:10px; margin-left:15px;">
+                    <div id="countpro" style="padding-top:10px; margin-left:0px;">
 
-                      <div style="background:#FFFFFF;width:200px">
-                        <a id="about" class="btn btn-info" role="button" style="background-color: #009900; width:200px; font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;">User Activities</a>
+                      <div style="background:#FFFFFF;width:240px">
+                        <a id="about" class="btn btn-info" role="button" style="background-color: #009900; width:240px; font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;">USER ACTIVITIES</a>
                         <div id="aboutdiv" class="countdetails" style="background-color: #009900;">
                           <?php include("countUsrActi.php"); //User actions count file?>
                           <table style=" color:#FFF; margin-top: 0px; font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;">
                             <tr>
-                              <td style="padding-left:20px;">Submissions</td>
-                              <td style="padding-left:50px;"><?php echo "$submissions[0]<br>"; ?></td>
+                              <td style="padding-left:20px; padding:10px;">SUBMISSIONS</td>
+                              <td style="padding-left:50px; padding:10px;"><?php echo "$submissions[0]<br>"; ?></td>
                             </tr>
                             <tr>
-                              <td style="padding-left:20px;">Improvements</td>
-                              <td style="padding-left:50px;"><?php echo "$improvements[0]<br>"; ?></td>
+                              <td style="padding-left:20px; padding:10px;">IMPROVEMENTS</td>
+                              <td style="padding-left:50px; padding:10px;"><?php echo "$improvements[0]<br>"; ?></td>
                             </tr>
                             <tr>
-                              <td style="padding-left:20px;">Comments</td>
-                              <td style="padding-left:50px;"><?php echo "$comments[0]<br>"; ?></td>
+                              <td style="padding-left:20px; padding:10px;">COMMENTS</td>
+                              <td style="padding-left:50px; padding:10px;"><?php echo "$comments[0]<br>"; ?></td>
                             </tr>
                           </table>
 
@@ -191,17 +194,18 @@ if($row222['category']=='Operator'){
                         </div>
                       </div>
 
-                
-
-                    
-
-
-</div>
+                      <div>
+                           <?php
+                              include("userprofilereward.php");
+                            ?>
+ 
+                      </div>
+                  </div>
              
    
-
+                   </div>
     <!--link details-->
-<div id="rightcontent" align="left" style="margin:-174px 15px 15px;width:730px;padding-left:300px;" >
+            <div class="col-md-6" id="rightcontent"  style="margin:15px 15px 15px;padding-left:5px;" >
     
               <div class="tab-content">
                            <div id="Profile" class="tab-pane fade in active">
@@ -305,9 +309,10 @@ if($row222['category']=='Operator'){
 
           
              </div>
-               <?php
-                include("userprofilereward.php");
-               ?>
+            </div> 
+             <!--  <?php
+                //include("userprofilereward.php");
+               ?>-->
  
      </div>
 

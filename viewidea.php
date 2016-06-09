@@ -14,6 +14,8 @@
 
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="http://seiyria.com/bootstrap-slider/js/bootstrap-slider.js"></script>                  
+
+
 <script type="text/javascript">
 						 
 						 function updateText(val){
@@ -25,14 +27,20 @@
 
 </head>
 
-<script type="text/javascript"> 
-                         window.onload = function() {$('.stylealert').fadeIn().delay(3000).fadeOut();
-             
-              };
-</script>    
+  
 
 
-<body>
+<body onload="displayalert()">
+
+  <script type="text/javascript"> 
+                         //window.onload = function(){ alert('Working!!'); };
+                     function displayalert() {
+                     // $('.stylealert').fadeIn().delay(2000).fadeOut();
+                     alert('Working!!');
+                     }
+
+</script>  
+
 <?php  include ('validations.php');  ?>
 <?php
 
@@ -164,6 +172,9 @@
    else if($comt == 2){
    $sqlQuery="SELECT * FROM comment AS C JOIN register AS R ON C.userId=R.id WHERE C.submissionId='$submissionId' AND C.commentType='Comment' ORDER BY C.date desc ";
    }
+   else if($comt == 3){
+   $sqlQuery="SELECT * FROM comment AS C JOIN register AS R ON C.userId=R.id WHERE C.submissionId='$submissionId' AND C.userId='$userNo' ORDER BY C.date desc ";
+   }
    else{
     header('location:view4.php');
    }
@@ -244,8 +255,8 @@
 </div>  
   
   <script type="text/javascript"> 
-              window.onload = function() {
-                $('.stylealert').fadeIn().delay(3000).fadeOut();
+            //  window.onload = function() {
+            //    $('.stylealert').fadeIn().delay(3000).fadeOut();
 						 
 						  <?php
 
@@ -303,7 +314,7 @@
 						 
 						 ?>
 						 
-						 };
+						// };
 						  </script>
                          
                 
@@ -419,6 +430,7 @@
                                 <option value="Add my idea as an improvement">Add my idea as an improvement </option>
                              </select>
                              
+                              <input for="image" type="file" name="image" style="margin-top:10px;padding-top:10px;" />
                          	<div class="row adjusttop2" > <!--comment button-->
                 	         <div class="col-md-2">
                          	<!-- <input type="submit"  value="POST" name="submit"  class="post_pad btn-sample"  >-->
@@ -432,7 +444,7 @@
 									 cmt_msg.setAttribute('class', 'hidden');*/
 									});
  							 </script> --><div class="col-md-8">
-                             <div class="stylealert" id="comment_message_lbl" ><span style="color:green; text-align:left;padding:0;" id="comment_message"><?php echo $alertmsg ?></span> </div>
+                             <div class="stylealert" id="comment_message_lbl" ><span style="color:green; text-align:left;padding:20px;" id="comment_message"><?php echo $alertmsg ?></span> </div>
                             </div> 
                              <input type="text" class="hidden" value="<?php echo $submissionId ?>" name="subId" />
                              
@@ -458,6 +470,7 @@
                        <li ><a href="http://localhost/ideapool/viewidea.php?id=<?php echo $submissionId ?>&comt=0" id="all">All</a></li>
                        <li ><a href="http://localhost/ideapool/viewidea.php?id=<?php echo $submissionId ?>&comt=1" id="imp">Improvements</a></li>
                        <li ><a href="http://localhost/ideapool/viewidea.php?id=<?php echo $submissionId ?>&comt=2" id="com"> Comments</a></li>
+                       <li ><a href="http://localhost/ideapool/viewidea.php?id=<?php echo $submissionId ?>&comt=3" id="com"> My comments</a></li>
                       
                       </ul>
                    </div>
@@ -494,7 +507,8 @@
                 ?> 
                                 <?php if ($passBit[$i]==0) { 
                                      $okVal=false; 
-                                     $accCount=$fCount=$timeCount=$accWeight=$fWeight=$timeWeight=0;
+                                     $accCount=$fCount=$timeCount=0;
+                                     $accWeight=$fWeight=$timeWeight=0;
                                      include ('database_connect.php');
                                      $sqlSum = "SELECT * FROM votes WHERE ImprovementId= '$all_comment_ids[$i]' ";
                                      $resultQ = mysqli_query($con,$sqlSum);
@@ -507,15 +521,33 @@
                                             else if($type=='Timeliness'){$timeCount=$timeCount+1; $timeWeight= $timeWeight+ $rowQ['weight']; }
 
                                         }
-                                        $accP= ($accWeight/$accCount);
-                                        $fP= ($fWeight/$fCount);
-                                        $timeP= ($timeWeight/$timeCount);
+                                        if($accCount==0 || $fCount==0 || $timeCount==0)
+                                        {
+                                          $accP= ($accWeight/$accCount);
+                                          $fP= ($fWeight/$fCount);
+                                          $timeP= ($timeWeight/$timeCount);
+                                        }
+                                        else{
+                                            $accP= ($accWeight/1);
+                                            $fP= ($fWeight/1);
+                                            $timeP= ($timeWeight/1);
+                                        }
                                      }
                                      else if(is_null($resultQ)){ $okVal=false;
                                      }
 
                                   ?>
-                               <div class="imp_response_top_div"  id="<?php echo "top".$commentId ?>"   > <?php echo $all_responses[$i]; ?> </div>
+                               
+                                  <div class="imp_response_top_div"  id="<?php echo "top".$commentId ?>"   >
+                                   <div class= "col-md-10"><?php echo $all_responses[$i]; ?></div>
+                                   <?php if($_GET['comt']==3){  ?>
+                                   <!-- <form>
+                                     <div class="col-md-1">  <button onclick="return enableEdit(<?php echo $commentId ?>)"> EDIT</button> </div>
+                                      <div class="col-md-1">  <button onclick="return enableDelete(<?php echo $commentId ?>)"> DEL</button> </div>
+                                   </form> -->
+                                   <?php } ?>
+                                  </div>
+                               
                                  <div class="imp_response_div "  id="<?php echo "desc".$commentId ?>"   >
 
                                   <!--<form name="voteform1" action="#" method="post" >-->
@@ -836,16 +868,17 @@
                 </div>        
                 <div class="row colorjum" align="center">
                       <div class="col-md-4 alignval ">
-                          <h2> <?php echo $avCount ?> </h2> 
+                          <h2> <?php echo $avCount ?> %</h2> 
                             <h5> ACCURACY </h5>
                         </div>
                        
                         <div class="col-md-4 alignval">
-                          <h2> <?php echo $fvCount ?> </h2> 
+                          <h2> <?php echo $fvCount ?> % </h2>
+
                             <h5> FEASIBILITY </h5>
                         </div>
                         <div class="col-md-4 ">
-                          <h2> <?php echo $tvCount ?> </h2> 
+                          <h2> <?php echo $tvCount ?> %</h2> 
                             <h5> TIMELINESS</h5>
                             
                         </div>

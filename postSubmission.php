@@ -34,6 +34,7 @@ if(isset($_POST['submitted']) == 1){
 	$source = $_FILES["image"]["tmp_name"];
 	$input=$destination;
 	$done = move_uploaded_file($source,$destination);
+	$currentMonth=date("m");
   	if($done)
    {
    }
@@ -43,7 +44,7 @@ if(isset($_POST['submitted']) == 1){
    }
   
    include("rewardcheck.php"); 	//reward checking;
-$postSet = "INSERT INTO post (postId, userId, faculty, department, category, title, content, date, files) VALUES ('$postId','$usrid','$_POST[faculty]','$_POST[department]', '$_POST[category]', '$_POST[title]', '$_POST[message]', now(), '$input')";
+$postSet = "INSERT INTO post (postId, userId, faculty, department, category, title, content, date, files, monthOf) VALUES ('$postId','$usrid','$_POST[faculty]','$_POST[department]', '$_POST[category]', '$_POST[title]', '$_POST[message]', now(), '$input', '$currentMonth')";
 $posts = mysqli_query($con, $postSet) or die(mysqli_error());	
 if ($posts) {
     echo "<script type='text/javascript'>alert('Your post has submitted successfully!')</script>";

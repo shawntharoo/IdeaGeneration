@@ -38,7 +38,7 @@
 			$commentCount = $row2['COUNT(*)'];
 		}
 	}
-	else
+	else 
 	{
 		$commentCount = 0;
 	}
@@ -62,7 +62,12 @@
 			$avC = $row4['COUNT(*)'];
 			$avSum = $row4['SUM(weight)'];
 		}
-		$avCount = round(($avSum/$avC),2) ; 
+		if($avC >0){
+			$avCount = round(($avSum/$avC),2) ; 
+		}
+		else{
+			$avCount = round(($avSum/1),2) ; 
+		}
 	}
 	else
 	{
@@ -76,7 +81,12 @@
 			$fvC = $row5['COUNT(*)'];
 			$fvSum = $row5['SUM(weight)'];
 		}
-		$fvCount = round(($fvSum/$fvC),2) ; 
+		if($fvC >0){
+			$fvCount = round(($fvSum/$fvC),2) ; 
+		}
+		else{
+			$fvCount = round(($fvSum/1),2) ;
+		}
 	}
 	else
 	{
@@ -89,7 +99,12 @@
 			$tvC = $row6['COUNT(*)'];
 			$tvSum = $row6['SUM(weight)'];
 		}
-		$tvCount = round(($tvSum/$tvC),2) ; 
+		if($tvC >0){
+		$tvCount = round(($tvSum/$tvC),2) ;
+		}
+		else{
+			$tvCount = round(($tvSum/1),2) ;
+		} 
 	}
 	else
 	{
